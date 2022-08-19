@@ -1,39 +1,46 @@
 import { useState } from "react";
 import { Step, Stepper } from "react-form-stepper";
 import Button from "../../components/Button";
+import CheckStockForms from "./CheckStockForms";
 const CheckStock = () => {
     const [activeStep, setActiveStep] = useState(0);
 
+    const stepLabels = [
+        { label: "独占力"},
+        { label: "変化"},
+        { label: "財務諸表"},
+        { label: "経営"},
+        { label: "製品"},
+    ];
+
     function nextStep() {
-      setActiveStep(1);
+      setActiveStep(activeStep + 1);
     }
-    
+
     function previousStep() {
-      setActiveStep(0);
+      setActiveStep(activeStep - 1);
     }
-    
+    console.log(activeStep);
     return (
       <>
         <div>
-          <Stepper
-            steps={[
-              { label: "アカウント情報" },
-              { label: "ファッション情報" },
-              { label: "完了" },
-            ]}
-            activeStep={activeStep}
-          />
+          <Stepper steps={stepLabels}  activeStep={activeStep} className="text-sm" />
         </div>
+        
         <div className="text-center">
-          <span style={{ display: activeStep === 0 ? "" : "none" }}>
+          <span style={{ display: activeStep !== 4 ? "" : "none" }}>
             <button onClick={nextStep}>次へ</button>
           </span>
-          <span style={{ display: activeStep === 1 ? "" : "none" }}>
-            <button onClick={previousStep}>アカウント情報へ戻る</button>
+          <span style={{ display: activeStep !== 0 ? "" : "none" }}>
+            <button onClick={previousStep}>戻る</button>
+          </span>
+          <span style={{ display: activeStep === 4 ? "" : "none" }}>
+            <button onClick={() => alert("チェックします")}>チェック</button>
           </span>
         </div>
+        <CheckStockForms />
       </>
     );
-}
+};
 
 export default CheckStock;
