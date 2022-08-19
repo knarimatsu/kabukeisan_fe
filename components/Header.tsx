@@ -1,5 +1,5 @@
 const Header = () => {
-    const title = 'ONKABU'
+    const title = 'ONKABU';
     return(
         <>
             <header className="border-b h-12 text-3xl items-center flex">
@@ -11,7 +11,7 @@ const Header = () => {
                 <div>{title}</div>
             </header>
         </>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

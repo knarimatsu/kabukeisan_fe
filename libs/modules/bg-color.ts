@@ -11,7 +11,7 @@ export const backgroundColor = (color: string) => {
         case 'blue':
             return 'bg-[#0099FF]';
         default:
-            return `bg-[${color}]`;
+            return ` bg-[${color}]`;
     }
 }
 

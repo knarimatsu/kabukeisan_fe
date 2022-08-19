@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Button from "./Button"
+import Button from "./Button";
 
 const Card =(
     {
@@ -14,7 +14,7 @@ const Card =(
 ) => {
     const router = useRouter();
     function toPage() {
-        router.push(`/${path}`)
+        router.push(`/${path}`);
     }
     return(
         <div
@@ -29,7 +29,7 @@ const Card =(
                 <Button title={title} color='primary' onClick={toPage}/>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Card
+export default Card;

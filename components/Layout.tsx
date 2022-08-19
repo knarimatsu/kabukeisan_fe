@@ -9,5 +9,5 @@ export const Layout = ({children}:AppLayoutProps) => {
         <div>
             {children}
         </div>
-    )
-}
+    );
+};

@@ -6,6 +6,6 @@ const Portfolio = () => {
             </div>
         </>
     );
-}
+};
 
 export default Portfolio;
