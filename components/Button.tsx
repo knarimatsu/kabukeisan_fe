@@ -12,11 +12,10 @@ const Button = (
         onClick?: any
     }
 ) => {
-
     return(
         <>
             <button
-                className={`${backgroundColor(color)} ${textColor(color)} text-white font-semibold text-lg px-4 py-2 rounded-lg m-4 `}
+                className={`${backgroundColor(color)} ${textColor(color)} font-semibold text-lg px-4 py-2 rounded-lg m-4 `}
                 onClick={onClick}
             >
                 {title}

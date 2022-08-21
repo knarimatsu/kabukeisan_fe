@@ -13,7 +13,7 @@ export const backgroundColor = (color: string) => {
         default:
             return ` bg-[${color}]`;
     }
-}
+};
 
 export function textColor(color: string): string {
     if (color === 'white') {
