@@ -1,17 +1,17 @@
 export const backgroundColor = (color: string) => {
     switch (color) {
         case 'white':
-            return 'bg-white';
+            return 'bg-white ';
         case 'black':
-            return 'bg-black';
+            return 'bg-black ';
         case 'primary':
-            return 'bg-[#25D366]';
+            return 'bg-[#25D366] ';
         case 'red':
-            return 'bg-[#BD081C]';
+            return 'bg-[#BD081C] ';
         case 'blue':
-            return 'bg-[#0099FF]';
+            return 'bg-[#0099FF] ';
         default:
-            return ` bg-[${color}]`;
+            return ` bg-[${color}] `;
     }
 };
 
