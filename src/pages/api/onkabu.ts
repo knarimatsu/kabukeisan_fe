@@ -6,7 +6,6 @@ axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 export const calcOnkabu = async (data: CalcData) => {
-    console.log("Hello");
     const req = {
         headers: {
             "Access-Control-Allow-Origin": "*",

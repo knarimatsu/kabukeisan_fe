@@ -14,8 +14,6 @@ const Button = ({
     color: string;
     onClick?: any;
 }) => {
-    console.log(textColor(color));
-    console.log(backgroundColor(color));
     return (
         <>
             <button
