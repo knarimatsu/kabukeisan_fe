@@ -1,6 +1,7 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import type { NextPage } from "next";
 import Card from "../components/Card";
+import Login from "../components/Login";
 
 const Home: NextPage = () => {
     const { data: session, status } = useSession();
@@ -46,15 +47,7 @@ const Home: NextPage = () => {
             </>
         );
     }
-    return (
-        <>
-            Not signed in <br />
-            <button onClick={() => signIn(undefined, { callbackUrl: "/" })}>
-                サインイン
-            </button>
-            <button onClick={() => signIn("google")}>Google</button>
-        </>
-    );
+    return <Login />;
 };
 
 export default Home;
