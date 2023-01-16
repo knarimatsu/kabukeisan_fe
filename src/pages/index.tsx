@@ -19,35 +19,35 @@ const Home: NextPage = () => {
     if (status === "loading") {
         return null;
     }
-    if (session) {
-        return (
-            <>
-                <div>
-                    <Card
-                        title={onkabuTitle}
-                        description={onkabuDescription}
-                        path="onkabu"
-                    />
-                    <Card
-                        title={calcTitle}
-                        description={calcDescription}
-                        path="calc"
-                    />
-                    <Card
-                        title={portfolioTitle}
-                        description={portfolioDescription}
-                        path="portfolio"
-                    />
-                    <Card
-                        title={checkStockTitle}
-                        description={checkStockDescription}
-                        path="check-stock"
-                    />
-                </div>
-            </>
-        );
-    }
-    return <Login />;
+    // if (session) {
+    return (
+        <>
+            <div>
+                <Card
+                    title={onkabuTitle}
+                    description={onkabuDescription}
+                    path="onkabu"
+                />
+                <Card
+                    title={calcTitle}
+                    description={calcDescription}
+                    path="calc"
+                />
+                <Card
+                    title={portfolioTitle}
+                    description={portfolioDescription}
+                    path="portfolio"
+                />
+                <Card
+                    title={checkStockTitle}
+                    description={checkStockDescription}
+                    path="check-stock"
+                />
+            </div>
+        </>
+    );
+    // }
+    // return <Login />;
 };
 
 export default Home;
