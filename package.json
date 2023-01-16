@@ -13,12 +13,14 @@
         "@emotion/styled": "^11.9.3",
         "@mui/material": "^5.9.2",
         "http-proxy-middleware": "^2.0.6",
+        "i18next": "^22.4.9",
         "next": "^13.0.6",
         "next-auth": "^4.18.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-form-stepper": "^2.0.3",
-        "react-hook-form": "^7.36.1"
+        "react-hook-form": "^7.36.1",
+        "react-i18next": "^12.1.4"
     },
     "devDependencies": {
         "@types/node": "18.0.5",
