@@ -33,11 +33,11 @@ const Home: NextPage = () => {
                     description={calcDescription}
                     path="calc"
                 />
-                <Card
+                {/* <Card
                     title={portfolioTitle}
                     description={portfolioDescription}
                     path="portfolio"
-                />
+                /> */}
                 <Card
                     title={checkStockTitle}
                     description={checkStockDescription}
