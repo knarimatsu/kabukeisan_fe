@@ -20,7 +20,7 @@ const Onkabu = () => {
                 onSubmit={handleSubmit(post)}
             >
                 <label htmlFor="stock" className="block my-5">
-                    {t("onkabu.stockAmount")}
+                    株数
                     <input
                         id="stock"
                         type="text"
