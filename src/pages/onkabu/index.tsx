@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { CalcData } from "../../libs/client/interfaces/calc-data";
 import { calcOnkabu } from "../api/onkabu";
 
@@ -8,8 +9,9 @@ const Onkabu = () => {
     });
     const post = (data: CalcData) => {
         console.log(data);
-        calcOnkabu(data);
+        // calcOnkabu(data);
     };
+    const { t } = useTranslation();
     return (
         <main className="h-screen">
             <h1 className="text-2xl m-3">{"Onkabu"}</h1>
@@ -18,7 +20,7 @@ const Onkabu = () => {
                 onSubmit={handleSubmit(post)}
             >
                 <label htmlFor="stock" className="block my-5">
-                    取得株数
+                    {t("onkabu.stockAmount")}
                     <input
                         id="stock"
                         type="text"
