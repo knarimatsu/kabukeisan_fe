@@ -4,3 +4,13 @@ export const onkabuResultState = atom({
     key: "onkabuResultState",
     default: "",
 });
+
+export const calcValueState = atom({
+    key: "calcValueState",
+    default: {
+        pv: 0,
+        overPv: 0,
+        cost: 0,
+        isValue: "",
+    },
+});
