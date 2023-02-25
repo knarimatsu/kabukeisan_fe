@@ -9,6 +9,7 @@ const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
         mode: "onSubmit",
     });
+    const { t } = useTranslation();
     const [onkabuResult, setOnkabuResult] = useRecoilState(onkabuResultState);
     const calcOnkabu = (data: CalcData): void => {
         const buy = Number(data.buyPrice);
@@ -32,7 +33,7 @@ const Onkabu = () => {
                 onSubmit={handleSubmit(calcOnkabu)}
             >
                 <label htmlFor="stock" className="block my-5">
-                    株数
+                    {t("onkabu.stockAmount")}
                     <input
                         id="stock"
                         type="text"
@@ -41,7 +42,7 @@ const Onkabu = () => {
                     />
                 </label>
                 <label htmlFor="buy-price" className="block my-5">
-                    取得株価
+                    {t("onkabu.stockPrice")}
                     <input
                         id="buy-price"
                         type="text"
@@ -50,7 +51,7 @@ const Onkabu = () => {
                     />
                 </label>
                 <label htmlFor="now-price" className="block my-5">
-                    現在株価
+                    {t("onkabu.nowPrice")}
                     <input
                         id="now-price"
                         type="text"
@@ -59,7 +60,11 @@ const Onkabu = () => {
                     />
                 </label>
                 <div className="mx-auto w-1/3">
-                    <input type="submit" className="border py-1 w-full" />
+                    <input
+                        type="submit"
+                        className="border py-1 w-full"
+                        value={t("button.send") as string}
+                    />
                 </div>
             </form>
             <h2 className="mx-auto mt-3">{onkabuResult}</h2>
