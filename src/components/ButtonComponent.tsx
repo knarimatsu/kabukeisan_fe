@@ -1,11 +1,7 @@
-import Router, { useRouter } from "next/router";
-import {
-    backgroundColor,
-    borderColor,
-    textColor,
-} from "../libs/modules/bg-color";
+import { useTranslation } from "react-i18next";
+import { backgroundColor } from "../libs/modules/bg-color";
 
-const Button = ({
+const ButtonPart = ({
     title,
     color,
     onClick,
@@ -14,6 +10,7 @@ const Button = ({
     color: string;
     onClick?: any;
 }) => {
+    const { t } = useTranslation();
     return (
         <>
             <button
@@ -22,10 +19,10 @@ const Button = ({
                 )} text-black border border-black font-semibold text-lg px-4 py-2 rounded-lg m-4 `}
                 onClick={onClick}
             >
-                {title}
+                {t(title)}
             </button>
         </>
     );
 };
 
-export default Button;
+export default ButtonPart;
