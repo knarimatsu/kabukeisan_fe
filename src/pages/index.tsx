@@ -28,11 +28,11 @@ const Home: NextPage = () => {
                     description={portfolioDescription}
                     path="portfolio"
                 /> */}
-                <Card
+                {/* <Card
                     title={"index.checkStockTitle"}
                     description={"index.checkStockDescription"}
                     path="check-stock"
-                />
+                /> */}
             </div>
         </>
     );
