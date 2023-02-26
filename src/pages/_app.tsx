@@ -5,18 +5,28 @@ import Header from "../components/Header";
 import { Layout } from "../components/Layout";
 import Footer from "../components/Footer";
 import { RecoilRoot } from "recoil";
+import "../../src/i18n/config";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 function MyApp({ Component, pageProps }: AppProps) {
+    const { t } = useTranslation();
     return (
-        <RecoilRoot>
-            <SessionProvider>
-                <Header />
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-                <Footer />
-            </SessionProvider>
-        </RecoilRoot>
+        <>
+            <Head>
+                <link rel="icon" href="../public/favicon.svg" />
+                <title>{t("header.title")}</title>
+            </Head>
+            <RecoilRoot>
+                <SessionProvider>
+                    <Header />
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                    <Footer />
+                </SessionProvider>
+            </RecoilRoot>
+        </>
     );
 }
 

@@ -1,11 +1,14 @@
 import { useSession, signOut } from "next-auth/react";
 import type { NextPage } from "next";
-import Card from "../components/Card";
 import Login from "../components/Login";
 import "../../src/i18n/config";
+import React from "react";
+// import Card from "../components/Card";
+import dynamic from "next/dynamic";
 
 const Home: NextPage = () => {
     const { data: session, status } = useSession();
+    const Card = dynamic(() => import("../components/Card"));
     if (status === "loading") {
         return null;
     }

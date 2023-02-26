@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import ButtonComponent from "./ButtonComponent";
 
 const Card = ({
     title,

@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
 
 import { calcValueState } from "../../libs/recoil/atom";
@@ -15,6 +16,7 @@ const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
         mode: "onSubmit",
     });
+    const { t } = useTranslation();
     const [calcValueResult, setCalcValueResult] =
         useRecoilState(calcValueState);
     const calcValue = async (data: PostData) => {
@@ -25,13 +27,13 @@ const Calc = () => {
     return (
         <>
             <main className="h-screen">
-                <h1 className="text-2xl m-3">企業価値計算</h1>
+                <h1 className="text-2xl m-3">{t("index.calcTitle")}</h1>
                 <form
                     className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
-                        時価総額
+                        {t("calcValue.marketCap")}
                         <input
                             id="buy-price"
                             {...register("buyPrice")}
@@ -40,7 +42,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="profit" className="block my-5">
-                        当期純利益
+                        {t("calcValue.netProfit")}
                         <input
                             id="profit"
                             {...register("profit")}
@@ -49,7 +51,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="depreciation" className="block my-5">
-                        減価償却費
+                        {t("calcValue.depreciation")}
                         <input
                             id="depreciation"
                             {...register("depreciation")}
@@ -58,7 +60,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="investing" className="block my-5">
-                        設備投資
+                        {t("calcValue.investing")}
                         <input
                             id="investing"
                             {...register("investing")}
@@ -67,7 +69,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="roic" className="block my-5">
-                        ROIC
+                        {t("calcValue.roic")}
                         <input
                             id="roic"
                             {...register("roic")}
@@ -75,16 +77,29 @@ const Calc = () => {
                             className="block border w-full h-9 outline-none p-3 rounded-md"
                         />
                     </label>
-                    <div className="mx-auto w-1/3">
-                        <input type="submit" className="border py-1 w-full" />
+                    <div className="mx-auto w-24">
+                        <input
+                            type="submit"
+                            className="border py-1 w-full"
+                            value={t("button.send") as string}
+                        />
                     </div>
                 </form>
                 {calcValueResult.isValue !== "" && (
                     <div className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg">
-                        <p>企業価値: {calcValueResult.pv}</p>
-                        <p>企業の付加価値: {calcValueResult.overPv}</p>
-                        <p>コスト: {calcValueResult.cost}</p>
-                        <p>割安感: {calcValueResult.isValue}</p>
+                        <p>
+                            {t("calcValue.companyValue")}: {calcValueResult.pv}
+                        </p>
+                        <p>
+                            {t("calcValue.overReturnValue")}:{" "}
+                            {calcValueResult.overPv}
+                        </p>
+                        <p>
+                            {t("calcValue.cost")}: {calcValueResult.cost}
+                        </p>
+                        <p>
+                            {t("calcValue.isValue")}: {calcValueResult.isValue}
+                        </p>
                     </div>
                 )}
             </main>

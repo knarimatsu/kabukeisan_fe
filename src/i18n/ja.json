@@ -1,4 +1,7 @@
 {
+    "header": {
+        "title": "株計算ドットコム"
+    },
     "index": {
         "onkabuTitle": "恩株",
         "onkabuDescription": "恩株とは投資金額を回収した持株のことです。現在株価からいくら利確するかという計算を行います",
@@ -12,7 +15,11 @@
         "depreciation": "減価償却費",
         "netProfit": "当期純利益",
         "investing": "設備投資",
-        "roic": "ROIC"
+        "roic": "ROIC",
+        "companyValue": "企業価値",
+        "overReturnValue": "超過リターン価値",
+        "cost": "コスト",
+        "isValue": "割安感"
     },
     "onkabu": {
         "stockAmount": "取得株数",
@@ -21,5 +28,14 @@
     },
     "portfolio": {
         "title": "保有株一覧"
+    },
+    "button": {
+        "calc": "計算",
+        "add": "追加",
+        "delete": "削除",
+        "edit": "編集",
+        "save": "保存",
+        "cancel": "キャンセル",
+        "send": "送信"
     }
 }
