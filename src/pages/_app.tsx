@@ -14,8 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <link rel="icon" href="../public/favicon.svg" />
                 <title>{t("header.title")}</title>
+                <link rel="icon" href="../public/favicons/favicon.ico" />
+                <link rel="shortcut icon" href="/favicon.ico" />
             </Head>
             <RecoilRoot>
                 <SessionProvider>
