@@ -25,7 +25,11 @@ const Card = ({
                 {t(description)}
             </p>
             <div className="flex justify-center m-3">
-                <Button color="success" variant="contained" onClick={toPage}>
+                <Button
+                    variant="contained"
+                    className="bg-[#2e7d32] hover:bg-[#1b5e20]"
+                    onClick={toPage}
+                >
                     {t(title)}
                 </Button>
             </div>

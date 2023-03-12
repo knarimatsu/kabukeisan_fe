@@ -1,18 +1,15 @@
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import type { NextPage } from "next";
-import Login from "../components/Login";
 import "../../src/i18n/config";
 import React from "react";
-// import Card from "../components/Card";
-import dynamic from "next/dynamic";
-
+import Card from "../components/Card";
+import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const Home: NextPage = () => {
     const { data: session, status } = useSession();
-    const Card = dynamic(() => import("../components/Card"));
     if (status === "loading") {
         return null;
     }
-    // if (session) {
     return (
         <>
             <div>
