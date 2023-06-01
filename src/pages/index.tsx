@@ -14,14 +14,19 @@ const Home: NextPage = () => {
         <>
             <div>
                 <Card
-                    title={"index.onkabuTitle"}
-                    description={"index.onkabuDescription"}
+                    title={"index.title.onkabu"}
+                    description={"index.description.onkabu"}
                     path="onkabu"
                 />
                 <Card
-                    title={"index.calcTitle"}
-                    description={"index.calcDescription"}
+                    title={"index.title.calc"}
+                    description={"index.description.calc"}
                     path="calc"
+                />
+                <Card
+                    title={"index.title.getAccountData"}
+                    description={"index.description.getAccountData"}
+                    path="account-data"
                 />
                 {/* <Card
                     title={portfolioTitle}
@@ -29,8 +34,8 @@ const Home: NextPage = () => {
                     path="portfolio"
                 /> */}
                 {/* <Card
-                    title={"index.checkStockTitle"}
-                    description={"index.checkStockDescription"}
+                    title={"index.title.checkStock"}
+                    description={"index.description.checkStock"}
                     path="check-stock"
                 /> */}
             </div>
