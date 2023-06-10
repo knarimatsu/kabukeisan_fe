@@ -28,16 +28,16 @@ const Home: NextPage = () => {
                     description={"index.description.getAccountData"}
                     path="account-data"
                 />
-                {/* <Card
-                    title={portfolioTitle}
-                    description={portfolioDescription}
-                    path="portfolio"
-                /> */}
-                {/* <Card
+                <Card
                     title={"index.title.checkStock"}
                     description={"index.description.checkStock"}
                     path="check-stock"
-                /> */}
+                />
+                <Card
+                    title={"index.title.portfolio"}
+                    description={"index.description.portfolio"}
+                    path="portfolio"
+                />
             </div>
         </>
     );
