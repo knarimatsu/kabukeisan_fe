@@ -21,7 +21,7 @@ const Home: NextPage = () => {
                 <Card
                     title={"index.title.calc"}
                     description={"index.description.calc"}
-                    path="calc"
+                    path="calc-stock"
                 />
                 <Card
                     title={"index.title.getAccountData"}
