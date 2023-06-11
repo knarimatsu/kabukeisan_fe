@@ -3,12 +3,25 @@
         "title": "株計算ドットコム"
     },
     "index": {
+        "title": {
+            "onkabu": "恩株",
+            "calc": "企業価値計算",
+            "checkStock": "株価チェックリスト",
+            "getAccountData": "財務データ取得",
+            "portfolio": "ポートフォリオ"
+        },
+        "description": {
+            "onkabu": "恩株とは投資金額を回収した持株のことです。現在株価からいくら利確するかという計算を行います",
+            "calc": "企業価値を計算します。企業価値は企業の株価を計算するための基礎となります。",
+            "checkStock": "株価チェックリストは株価をチェックするためのリストです。株価チェックリストを使うことで株価をチェックすることができます。",
+            "getAccountData": "上場企業の財務データを取得します",
+            "portfolio": "保有株を管理します"
+        },
         "onkabuTitle": "恩株",
-        "onkabuDescription": "恩株とは投資金額を回収した持株のことです。現在株価からいくら利確するかという計算を行います",
         "calcTitle": "企業価値計算",
-        "calcDescription": "企業価値を計算します。企業価値は企業の株価を計算するための基礎となります。",
+        "calcDescription": "",
         "checkStockTitle": "株価チェックリスト",
-        "checkStockDescription": "株価チェックリストは株価をチェックするためのリストです。株価チェックリストを使うことで株価をチェックすることができます。"
+        "checkStockDescription": ""
     },
     "calcValue": {
         "marketCap": "時価総額",

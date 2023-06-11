@@ -7,6 +7,7 @@ const Login = () => {
             <button onClick={() => signIn(undefined, { callbackUrl: "/" })}>
                 サインイン
             </button>
+            <br />
             <button onClick={() => signIn("google")}>Google</button>
         </>
     );

@@ -14,25 +14,30 @@ const Home: NextPage = () => {
         <>
             <div>
                 <Card
-                    title={"index.onkabuTitle"}
-                    description={"index.onkabuDescription"}
+                    title={"index.title.onkabu"}
+                    description={"index.description.onkabu"}
                     path="onkabu"
                 />
                 <Card
-                    title={"index.calcTitle"}
-                    description={"index.calcDescription"}
-                    path="calc"
+                    title={"index.title.calc"}
+                    description={"index.description.calc"}
+                    path="calc-stock"
                 />
-                {/* <Card
-                    title={portfolioTitle}
-                    description={portfolioDescription}
-                    path="portfolio"
-                /> */}
-                {/* <Card
-                    title={"index.checkStockTitle"}
-                    description={"index.checkStockDescription"}
+                <Card
+                    title={"index.title.getAccountData"}
+                    description={"index.description.getAccountData"}
+                    path="account-data"
+                />
+                <Card
+                    title={"index.title.checkStock"}
+                    description={"index.description.checkStock"}
                     path="check-stock"
-                /> */}
+                />
+                <Card
+                    title={"index.title.portfolio"}
+                    description={"index.description.portfolio"}
+                    path="portfolio"
+                />
             </div>
         </>
     );
