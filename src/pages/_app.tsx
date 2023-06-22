@@ -34,6 +34,11 @@ function MyApp({ Component, pageProps }: AppProps<{ session: Session }>) {
                     gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}');
                 `}
                 </Script>
+                <Script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1990375823734573"
+                    crossOrigin="anonymous"
+                ></Script>
                 <RecoilRoot>
                     <Header />
                     <Layout>
