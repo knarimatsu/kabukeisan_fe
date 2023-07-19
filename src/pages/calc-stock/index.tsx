@@ -4,6 +4,11 @@ import { useRecoilState } from "recoil";
 
 import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
+import React, { Suspense, lazy } from "react";
+import dynamic from "next/dynamic";
+
+const Header = dynamic(() => import("../../components/Header"));
+const Footer = dynamic(() => import("../../components/Footer"));
 
 interface PostData {
     buyPrice: number;
@@ -26,6 +31,7 @@ const Calc = () => {
 
     return (
         <>
+            <Header />
             <main className="h-screen">
                 <h1 className="text-2xl m-3">{t("index.calcTitle")}</h1>
                 <form
@@ -103,6 +109,7 @@ const Calc = () => {
                     </div>
                 )}
             </main>
+            <Footer />
         </>
     );
 };

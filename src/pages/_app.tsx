@@ -1,9 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Header from "../components/Header";
 import { Layout } from "../components/Layout";
-import Footer from "../components/Footer";
 import { RecoilRoot } from "recoil";
 import "../../src/i18n/config";
 import Head from "next/head";
@@ -40,11 +38,9 @@ function MyApp({ Component, pageProps }: AppProps<{ session: Session }>) {
                     crossOrigin="anonymous"
                 ></Script>
                 <RecoilRoot>
-                    <Header />
                     <Layout>
                         <Component {...pageProps} />
                     </Layout>
-                    <Footer />
                 </RecoilRoot>
             </SessionProvider>
         </>
