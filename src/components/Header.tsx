@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 const Header = () => {
     const { t } = useTranslation();

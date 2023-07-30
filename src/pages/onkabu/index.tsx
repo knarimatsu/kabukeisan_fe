@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { CalcData } from "../../libs/client/interfaces/calc-data";
-import { calcOnkabu } from "../api/onkabu";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../../libs/recoil/atom";
 import React from "react";

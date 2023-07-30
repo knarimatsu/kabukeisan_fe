@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { Suspense, lazy } from "react";
+import React from "react";
 const Header = dynamic(() => import("./Header"));
 const Footer = dynamic(() => import("./Footer"));
 const Card = dynamic(() => import("./Card"));
