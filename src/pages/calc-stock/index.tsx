@@ -6,17 +6,11 @@ import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
 import React, { Suspense, lazy } from "react";
 import dynamic from "next/dynamic";
+import { PostData } from "../../libs/client/interfaces/post-data";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
 
-interface PostData {
-    buyPrice: number;
-    profit: number;
-    depreciation: number;
-    investing: number;
-    roic: number;
-}
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
         mode: "onSubmit",
