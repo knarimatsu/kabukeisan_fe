@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 
 import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
-import React, { Suspense, lazy, useCallback } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import { PostData } from "../../libs/client/interfaces/post-data";
 
