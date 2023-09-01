@@ -32,10 +32,10 @@ const Onkabu = () => {
     return (
         <>
             <Header />
-            <main className="h-screen dark:bg-black">
-                <h1 className="text-2xl dark:text-gray-400">{"Onkabu"}</h1>
+            <main className="h-screen dark:bg-black dark:text-gray-400">
+                <h1 className="text-2xl ">{"Onkabu"}</h1>
                 <form
-                    className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg text-gray-400"
+                    className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
                     <label htmlFor="stock" className="block my-5">
@@ -44,7 +44,7 @@ const Onkabu = () => {
                             id="stock"
                             type="text"
                             {...register("stock")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
+                            className="block border w-full h-9 outline-none p-3 rounded-md bg-gray-700"
                         />
                     </label>
                     <label htmlFor="buy-price" className="block my-5">
@@ -53,7 +53,7 @@ const Onkabu = () => {
                             id="buy-price"
                             type="text"
                             {...register("buyPrice")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
+                            className="block border w-full h-9 outline-none p-3 rounded-md bg-gray-700"
                         />
                     </label>
                     <label htmlFor="now-price" className="block my-5">
@@ -62,7 +62,7 @@ const Onkabu = () => {
                             id="now-price"
                             type="text"
                             {...register("nowPrice")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
+                            className="block border w-full h-9 outline-none p-3 rounded-md dark: bg-gray-700"
                         />
                     </label>
                     <div className="mx-auto w-1/3">
