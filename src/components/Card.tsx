@@ -17,11 +17,11 @@ const Card = ({
         router.push(`/${path}`);
     }
     return (
-        <div className="p-6 bg-white rounded-lg m-10 border-inherit shadow-md">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <div className="p-6 mb-10 bg-white rounded-lg border-inherit shadow-md dark:bg-gray-800">
+            <h5 className="mb-2 text-2xl font-normal tracking-tight text-gray-900 dark:text-gray-400">
                 {t(title)}
             </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
+            <p className="font-normal text-gray-700 my-5 dark:text-gray-400">
                 {t(description)}
             </p>
             <div className="flex justify-center m-3">
