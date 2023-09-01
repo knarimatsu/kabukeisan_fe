@@ -10,7 +10,7 @@ const Portfolio = () => {
     return (
         <>
             <Header />
-            <main className="h-screen">
+            <main className="h-screen dark:bg-black dark:text-gray-400">
                 {session && (
                     <div>
                         <h1>ポートフォリオ</h1>
