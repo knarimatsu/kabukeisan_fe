@@ -8,7 +8,7 @@ const CardList = () => {
     return (
         <>
             <Header />
-            <div className="pb-5 py-10 px-10 dark:bg-black">
+            <div className="pb-5 py-10 px-10 dark:bg-black xl:flex xl:h-screen">
                 <Card
                     title={"index.title.onkabu"}
                     description={"index.description.onkabu"}
