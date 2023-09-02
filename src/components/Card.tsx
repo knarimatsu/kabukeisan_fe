@@ -17,7 +17,7 @@ const Card = ({
         router.push(`/${path}`);
     }
     return (
-        <div className="p-6 mb-10 bg-white rounded-lg border-inherit shadow-md dark:bg-gray-800">
+        <div className="w-72 h-56 p-6 mb-10 mx-auto bg-white rounded-lg border-inherit shadow-md dark:bg-gray-800">
             <h5 className="mb-2 text-2xl font-normal tracking-tight text-gray-900 dark:text-gray-400">
                 {t(title)}
             </h5>
