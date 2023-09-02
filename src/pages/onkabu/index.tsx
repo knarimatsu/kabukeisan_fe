@@ -35,7 +35,7 @@ const Onkabu = () => {
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl ">{"Onkabu"}</h1>
                 <form
-                    className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg dark:bg-gray-900"
+                    className="w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
                     <label htmlFor="stock" className="block my-5">

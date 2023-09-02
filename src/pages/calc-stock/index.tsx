@@ -29,7 +29,7 @@ const Calc = () => {
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl">{t("index.calcTitle")}</h1>
                 <form
-                    className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg"
+                    className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
