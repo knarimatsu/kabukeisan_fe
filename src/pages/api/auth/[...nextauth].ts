@@ -1,12 +1,14 @@
-import NextAuth from "next-auth/next";
-import CognitoProvider from "next-auth/providers/cognito";
+import NextAuth, { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
     providers: [
-        CognitoProvider({
-            clientId: process.env.COGNITO_CLIENT_ID as string,
-            clientSecret: process.env.COGNITO_CLIENT_SECRET as string,
-            issuer: process.env.COGNITO_ISSUER,
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
     ],
-});
+    secret: process.env.NEXTAUTH_SECRET as string,
+};
+
+export default NextAuth(authOptions);

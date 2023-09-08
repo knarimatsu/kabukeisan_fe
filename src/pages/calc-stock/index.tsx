@@ -4,14 +4,13 @@ import { useRecoilState } from "recoil";
 
 import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
+import React from "react";
+import dynamic from "next/dynamic";
+import { PostData } from "../../libs/client/interfaces/post-data";
 
-interface PostData {
-    buyPrice: number;
-    profit: number;
-    depreciation: number;
-    investing: number;
-    roic: number;
-}
+const Header = dynamic(() => import("../../components/Header"));
+const Footer = dynamic(() => import("../../components/Footer"));
+
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
         mode: "onSubmit",
@@ -26,10 +25,11 @@ const Calc = () => {
 
     return (
         <>
-            <main className="h-screen">
-                <h1 className="text-2xl m-3">{t("index.calcTitle")}</h1>
+            <Header />
+            <main className="h-screen dark:bg-black dark:text-gray-400">
+                <h1 className="text-2xl">{t("index.calcTitle")}</h1>
                 <form
-                    className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg"
+                    className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
@@ -103,6 +103,7 @@ const Calc = () => {
                     </div>
                 )}
             </main>
+            <Footer />
         </>
     );
 };
