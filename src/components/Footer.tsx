@@ -9,7 +9,7 @@ const Footer: NextComponentType = () => {
                 dark:border-gray-800
             "
         >
-            © 2023 kabukeisan.com
+            © 2023 Kazuki Narimatsu
         </p>
     );
 };
