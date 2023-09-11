@@ -58,25 +58,6 @@ const Calc = () => {
                     </p>
                 </div>
             </Modal>
-            {/* <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Example Modal"
-                className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg"
-            >
-                <p>
-                    {t("calcValue.companyValue")}: {calcValueResult.pv}
-                </p>
-                <p>
-                    {t("calcValue.overReturnValue")}: {calcValueResult.overPv}
-                </p>
-                <p>
-                    {t("calcValue.cost")}: {calcValueResult.cost}
-                </p>
-                <p>
-                    {t("calcValue.isValue")}: {calcValueResult.isValue}
-                </p>
-            </Modal> */}
         </>
     );
 
@@ -86,7 +67,7 @@ const Calc = () => {
             <main className="dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl">{t("index.calcTitle")}</h1>
                 <form
-                    className="px-10 py-8 w-96 my-4 mx-auto"
+                    className="px-10 py-8 w-72 mx-auto"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
@@ -143,23 +124,6 @@ const Calc = () => {
                     </div>
                 </form>
                 {modal}
-                {/* {calcValueResult.isValue !== "" && (
-                    <div className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg">
-                        <p>
-                            {t("calcValue.companyValue")}: {calcValueResult.pv}
-                        </p>
-                        <p>
-                            {t("calcValue.overReturnValue")}:{" "}
-                            {calcValueResult.overPv}
-                        </p>
-                        <p>
-                            {t("calcValue.cost")}: {calcValueResult.cost}
-                        </p>
-                        <p>
-                            {t("calcValue.isValue")}: {calcValueResult.isValue}
-                        </p>
-                    </div>
-                )} */}
             </main>
             <Footer />
         </>
