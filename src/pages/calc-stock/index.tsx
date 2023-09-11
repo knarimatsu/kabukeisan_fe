@@ -4,9 +4,10 @@ import { useRecoilState } from "recoil";
 
 import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { PostData } from "../../libs/client/interfaces/post-data";
+import { Modal } from "@mui/material";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -15,21 +16,77 @@ const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
         mode: "onSubmit",
     });
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const { t } = useTranslation();
     const [calcValueResult, setCalcValueResult] =
         useRecoilState(calcValueState);
+
+    const openModal = (data: PostData) => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
     const calcValue = async (data: PostData) => {
+        setModalIsOpen(true);
         const result = await calcCompanyValue(data);
         setCalcValueResult(result);
     };
 
+    const modal = (
+        <>
+            <Modal
+                open={modalIsOpen}
+                onClose={closeModal}
+                className="flex h-100 w-80 mx-auto items-center justify-center"
+            >
+                <div className="px-10 py-8 w-96 border rounded-lg bg-white">
+                    <p>
+                        {t("calcValue.companyValue")}: {calcValueResult.pv}
+                    </p>
+                    <p>
+                        {t("calcValue.overReturnValue")}:{" "}
+                        {calcValueResult.overPv}
+                    </p>
+                    <p>
+                        {t("calcValue.cost")}: {calcValueResult.cost}
+                    </p>
+                    <p>
+                        {t("calcValue.isValue")}: {calcValueResult.isValue}
+                    </p>
+                </div>
+            </Modal>
+            {/* <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg"
+            >
+                <p>
+                    {t("calcValue.companyValue")}: {calcValueResult.pv}
+                </p>
+                <p>
+                    {t("calcValue.overReturnValue")}: {calcValueResult.overPv}
+                </p>
+                <p>
+                    {t("calcValue.cost")}: {calcValueResult.cost}
+                </p>
+                <p>
+                    {t("calcValue.isValue")}: {calcValueResult.isValue}
+                </p>
+            </Modal> */}
+        </>
+    );
+
     return (
         <>
             <Header />
-            <main className="h-screen dark:bg-black dark:text-gray-400">
+            <main className="dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl">{t("index.calcTitle")}</h1>
                 <form
-                    className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg"
+                    className="px-10 py-8 w-96 my-4 mx-auto"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
@@ -85,8 +142,9 @@ const Calc = () => {
                         />
                     </div>
                 </form>
-                {calcValueResult.isValue !== "" && (
-                    <div className="px-10 py-8 w-3/4 my-4 mx-auto border rounded-lg">
+                {modal}
+                {/* {calcValueResult.isValue !== "" && (
+                    <div className="px-10 py-8 w-96 my-4 mx-auto border rounded-lg">
                         <p>
                             {t("calcValue.companyValue")}: {calcValueResult.pv}
                         </p>
@@ -101,7 +159,7 @@ const Calc = () => {
                             {t("calcValue.isValue")}: {calcValueResult.isValue}
                         </p>
                     </div>
-                )}
+                )} */}
             </main>
             <Footer />
         </>
