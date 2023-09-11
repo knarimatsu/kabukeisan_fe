@@ -8,7 +8,9 @@
             "calc": "企業価値計算",
             "checkStock": "株価チェックリスト",
             "getAccountData": "財務データ取得",
-            "portfolio": "ポートフォリオ"
+            "portfolio": "ポートフォリオ",
+            "signup": "新規登録",
+            "login": "ログイン"
         },
         "description": {
             "onkabu": "恩株とは投資金額を回収した後の持株です。",
@@ -49,6 +51,7 @@
         "edit": "編集",
         "save": "保存",
         "cancel": "キャンセル",
-        "send": "送信"
+        "send": "送信",
+        "register": "登録"
     }
 }
