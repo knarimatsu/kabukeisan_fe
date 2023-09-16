@@ -64,7 +64,7 @@ const Calc = () => {
     return (
         <>
             <Header />
-            <main className="dark:bg-black dark:text-gray-400">
+            <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl">{t("index.calcTitle")}</h1>
                 <form
                     className="px-10 py-8 w-72 mx-auto"
