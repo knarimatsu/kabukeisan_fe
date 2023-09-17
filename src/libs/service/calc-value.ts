@@ -1,4 +1,3 @@
-import { SetterOrUpdater } from "recoil";
 import { PostData } from "../../types/post-data";
 
 export const calcCompanyValue = (data: PostData) => {

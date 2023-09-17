@@ -1,14 +1,11 @@
-import { useSession, signIn, signOut } from "next-auth/react";
 import dynamic from "next/dynamic";
 import React from "react";
-import { HEADERCOLUMN } from "../../utils/header-column";
+import { HEADERCOLUMN } from "../../utils/HeaderColumn";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
 
 const Portfolio = () => {
-    const { data: session } = useSession();
-
     return (
         <>
             <Header />
@@ -17,8 +14,8 @@ const Portfolio = () => {
                     <table className="overflow-scroll p-4 min-w-min my-auto mx-auto border-solid border-2">
                         <thead className="border-bottom-2">
                             <tr>
-                                {HEADERCOLUMN.map((column) => (
-                                    <th className="p-3 text-center">
+                                {HEADERCOLUMN.map((column, key) => (
+                                    <th key={key} className="p-3 text-center">
                                         {column}
                                     </th>
                                 ))}

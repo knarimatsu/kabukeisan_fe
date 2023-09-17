@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { CalcData } from "../../types/calc-data";
+import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../../libs/recoil/atom";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { Fade, Modal } from "@mui/material";
 import ModalComponent from "../../components/ModalComponent";
 
 const Header = dynamic(() => import("../../components/Header"));

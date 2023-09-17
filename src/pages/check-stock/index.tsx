@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import React from "react";
 import dynamic from "next/dynamic";
 import RadioButton from "../../components/RadioButton";
+import { CHECKSTOCKCONTENT } from "../../utils/CheckStockContent";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -18,20 +19,13 @@ const CheckStock = () => {
                 className="p-3 dark:bg-black dark:text-gray-400"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <RadioButton
-                    label="市場においてシェアは高いか"
-                    value1="Yes"
-                    value2="No"
-                    registerName="question-1"
-                    register={register}
-                />
-                <RadioButton
-                    label="2つ目の質問"
-                    value1="Yes"
-                    value2="No"
-                    registerName="question-2"
-                    register={register}
-                />
+                {CHECKSTOCKCONTENT.map((content, key) => (
+                    <RadioButton
+                        key={key}
+                        RadioButtonContent={content}
+                        register={register}
+                    />
+                ))}
                 <input type="submit" />
             </form>
             <Footer />

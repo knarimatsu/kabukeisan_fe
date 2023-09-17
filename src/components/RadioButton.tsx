@@ -1,69 +1,62 @@
 import React from "react";
-import { FieldValues, UseFormRegister, useForm } from "react-hook-form";
+import { FieldValues, UseFormRegister } from "react-hook-form";
+import { RadioButtonContent } from "../types/CheckStockContentType";
 
 const RadioButton = ({
-    label,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
+    RadioButtonContent,
     register,
-    registerName,
 }: {
-    label: string;
-    value1: string;
-    value2?: string;
-    value3?: string;
-    value4?: string;
-    value5?: string;
-    registerName: string;
+    RadioButtonContent: RadioButtonContent;
     register: UseFormRegister<FieldValues>;
 }) => {
-    // const { register } = useForm();
     return (
         <>
-            <label className="block mx-6">
-                {label}
+            <label className="block mx-6 mt-6">
+                {RadioButtonContent.label}
                 <div>
                     <input
+                        className="ml-6"
                         type="radio"
-                        value={value1}
-                        {...register(registerName)}
+                        value={RadioButtonContent.value1}
+                        {...register(RadioButtonContent.registerName)}
                     />
-                    {value1}
-                    {value2 && (
+                    {RadioButtonContent.value1}
+                    {RadioButtonContent.value2 && (
                         <input
+                            className="ml-6"
                             type="radio"
-                            value={value2}
-                            {...register(registerName)}
+                            value={RadioButtonContent.value2}
+                            {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {value2 && value2}
-                    {value3 && (
+                    {RadioButtonContent.value2 && RadioButtonContent.value2}
+                    {RadioButtonContent.value3 && (
                         <input
+                            className="ml-6"
                             type="radio"
-                            value={value3}
-                            {...register(registerName)}
+                            value={RadioButtonContent.value3}
+                            {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {value3}
-                    {value4 && (
+                    {RadioButtonContent.value3}
+                    {RadioButtonContent.value4 && (
                         <input
+                            className="ml-6"
                             type="radio"
-                            value={value4}
-                            {...register(registerName)}
+                            value={RadioButtonContent.value4}
+                            {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {value4}
-                    {value5 && (
+                    {RadioButtonContent.value4}
+                    {RadioButtonContent.value5 && (
                         <input
+                            className="ml-6"
                             type="radio"
-                            value={value5}
-                            {...register(registerName)}
+                            value={RadioButtonContent.value5}
+                            {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {value5}
+                    {RadioButtonContent.value5}
                 </div>
             </label>
         </>
