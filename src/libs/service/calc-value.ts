@@ -1,5 +1,5 @@
 import { SetterOrUpdater } from "recoil";
-import { PostData } from "../client/interfaces/post-data";
+import { PostData } from "../../types/post-data";
 
 export const calcCompanyValue = (data: PostData) => {
     const { buyPrice, profit, depreciation, investing, roic } = data;
