@@ -1,35 +1,39 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import dynamic from "next/dynamic";
 import React from "react";
+import { HEADERCOLUMN } from "../../utils/header-column";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
 
 const Portfolio = () => {
     const { data: session } = useSession();
+
     return (
         <>
             <Header />
-            <main className="h-screen dark:bg-black dark:text-gray-400">
-                {session && (
-                    <div>
-                        <h1>ポートフォリオ</h1>
-                        <p>ログインユーザー</p>
-                        <div>{session.user?.name}</div>
-                        <p>ログインユーザーメールアドレス</p>
-                        <div>{session.user?.email}</div>
-                        <img src={session.user?.image as string} />
-                        <button onClick={() => signOut()}>Sign out</button>
-                    </div>
-                )}
-                {!session && (
-                    <div>
-                        <p>
-                            ポートフォリオ機能を利用したい場合はログインしてください
-                        </p>
-                        <button onClick={() => signIn()}>Sign in</button>
-                    </div>
-                )}
+            <main className="h-screen w-full dark:bg-black dark:text-gray-400">
+                <div className="overflow-x-auto pt-4">
+                    <table className="overflow-scroll p-4 min-w-min my-auto mx-auto border-solid border-2">
+                        <thead className="border-bottom-2">
+                            <tr>
+                                {HEADERCOLUMN.map((column) => (
+                                    <th className="p-3 text-center">
+                                        {column}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="p-3 text-center">ZOZO</td>
+                                <td className="p-3 text-center">200</td>
+                                <td className="p-3 text-center">2742</td>
+                                <td className="p-3 text-center">3000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </main>
             <Footer />
         </>

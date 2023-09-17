@@ -6,9 +6,8 @@ import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { PostData } from "../../libs/client/interfaces/post-data";
-import { Modal } from "@mui/material";
 import ModalComponent from "../../components/ModalComponent";
+import { PostData } from "../../types/post-data";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -22,10 +21,6 @@ const Calc = () => {
     const { t } = useTranslation();
     const [calcValueResult, setCalcValueResult] =
         useRecoilState(calcValueState);
-
-    const openModal = (data: PostData) => {
-        setModalIsOpen(true);
-    };
 
     const closeModal = () => {
         setModalIsOpen(false);
