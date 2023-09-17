@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { CalcData } from "../../libs/client/interfaces/calc-data";
+import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../../libs/recoil/atom";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import ModalComponent from "../../components/ModalComponent";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -14,6 +15,11 @@ const Onkabu = () => {
         mode: "onSubmit",
     });
     const { t } = useTranslation();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
     const [onkabuResult, setOnkabuResult] = useRecoilState(onkabuResultState);
     const calcOnkabu = (data: CalcData): void => {
         const buy = Number(data.buyPrice);
@@ -28,6 +34,7 @@ const Onkabu = () => {
         } else {
             setOnkabuResult("恩株は作れません");
         }
+        setModalIsOpen(true);
     };
     return (
         <>
@@ -73,7 +80,11 @@ const Onkabu = () => {
                         />
                     </div>
                 </form>
-                <h2 className="mx-auto mt-3">{onkabuResult}</h2>
+                <ModalComponent isOpen={modalIsOpen} closeModal={closeModal}>
+                    <div className="px-10 py-8 w-96 border rounded-lg bg-white">
+                        {onkabuResult}
+                    </div>
+                </ModalComponent>
             </main>
             <Footer />
         </>

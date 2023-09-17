@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import HomeIcon from "@mui/icons-material/Home";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 const Header = () => {
     const { t } = useTranslation();
     const router = useRouter();
