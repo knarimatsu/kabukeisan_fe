@@ -19,21 +19,11 @@ const CardList = () => {
                     description={"index.description.calc"}
                     path="calc-stock"
                 />
-                {/* <Card
-                    title={"index.title.getAccountData"}
-                    description={"index.description.getAccountData"}
-                    path="account-data"
-                /> */}
-                {/* <Card
+                <Card
                     title={"index.title.checkStock"}
                     description={"index.description.checkStock"}
                     path="check-stock"
                 />
-                <Card
-                    title={"index.title.portfolio"}
-                    description={"index.description.portfolio"}
-                    path="portfolio"
-                /> */}
             </div>
             <Footer />
         </>

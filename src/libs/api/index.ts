@@ -26,6 +26,6 @@ export const createUser = async (url: string, data: any) => {
     }
 };
 
-const deleteUser = async (data: any) => {};
+// const deleteUser = async (data: any) => {};
 
-const updateUser = async (data: any) => {};
+// const updateUser = async (data: any) => {};
