@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, Input, TextField, TextareaAutosize } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { createUser } from "../../libs/api";
 
 type InputUserInfo = {

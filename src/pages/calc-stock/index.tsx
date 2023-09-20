@@ -6,8 +6,8 @@ import { calcValueState } from "../../libs/recoil/atom";
 import { calcCompanyValue } from "../../libs/service/calc-value";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { PostData } from "../../libs/client/interfaces/post-data";
-import { Modal } from "@mui/material";
+import ModalComponent from "../../components/ModalComponent";
+import { PostData } from "../../types/post-data";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -22,10 +22,6 @@ const Calc = () => {
     const [calcValueResult, setCalcValueResult] =
         useRecoilState(calcValueState);
 
-    const openModal = (data: PostData) => {
-        setModalIsOpen(true);
-    };
-
     const closeModal = () => {
         setModalIsOpen(false);
     };
@@ -35,39 +31,30 @@ const Calc = () => {
         setCalcValueResult(result);
     };
 
-    const modal = (
-        <>
-            <Modal
-                open={modalIsOpen}
-                onClose={closeModal}
-                className="flex h-100 w-80 mx-auto items-center justify-center"
-            >
-                <div className="px-10 py-8 w-96 border rounded-lg bg-white">
-                    <p>
-                        {t("calcValue.companyValue")}: {calcValueResult.pv}
-                    </p>
-                    <p>
-                        {t("calcValue.overReturnValue")}:{" "}
-                        {calcValueResult.overPv}
-                    </p>
-                    <p>
-                        {t("calcValue.cost")}: {calcValueResult.cost}
-                    </p>
-                    <p>
-                        {t("calcValue.isValue")}: {calcValueResult.isValue}
-                    </p>
-                </div>
-            </Modal>
-        </>
+    const modalContent = (
+        <div className="px-10 py-8 w-96 border rounded-lg bg-white">
+            <p>
+                {t("calcValue.companyValue")}: {calcValueResult.pv}
+            </p>
+            <p>
+                {t("calcValue.overReturnValue")}: {calcValueResult.overPv}
+            </p>
+            <p>
+                {t("calcValue.cost")}: {calcValueResult.cost}
+            </p>
+            <p>
+                {t("calcValue.isValue")}: {calcValueResult.isValue}
+            </p>
+        </div>
     );
 
     return (
         <>
             <Header />
-            <main className="dark:bg-black dark:text-gray-400">
+            <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl">{t("index.calcTitle")}</h1>
                 <form
-                    className="px-10 py-8 w-72 mx-auto"
+                    className="w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
@@ -123,7 +110,9 @@ const Calc = () => {
                         />
                     </div>
                 </form>
-                {modal}
+                <ModalComponent isOpen={modalIsOpen} closeModal={closeModal}>
+                    {modalContent}
+                </ModalComponent>
             </main>
             <Footer />
         </>
