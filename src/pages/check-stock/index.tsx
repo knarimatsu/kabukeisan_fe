@@ -20,11 +20,12 @@ const CheckStock = () => {
                 onSubmit={handleSubmit(onSubmit)}
             >
                 {CHECKSTOCKCONTENT.map((content, key) => (
-                    <RadioButton
-                        key={key}
-                        RadioButtonContent={content}
-                        register={register}
-                    />
+                    <div key={key}>
+                        <RadioButton
+                            RadioButtonContent={content}
+                            register={register}
+                        />
+                    </div>
                 ))}
                 <input type="submit" />
             </form>
