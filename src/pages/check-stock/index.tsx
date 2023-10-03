@@ -20,7 +20,10 @@ const CheckStock = () => {
                 onSubmit={handleSubmit(onSubmit)}
             >
                 {CHECKSTOCKCONTENT.map((content, key) => (
-                    <div key={key}>
+                    <div
+                        key={key}
+                        className="border rounded dark:border-gray-400 dark:bg-gray-800 p-3 mb-3"
+                    >
                         <RadioButton
                             RadioButtonContent={content}
                             register={register}
