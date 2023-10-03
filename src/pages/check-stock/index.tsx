@@ -30,7 +30,10 @@ const CheckStock = () => {
                         />
                     </div>
                 ))}
-                <input type="submit" />
+                <input
+                    type="submit"
+                    className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white py-1 px-3 rounded w-full w-16 mx-auto my-5"
+                />
             </form>
             <Footer />
         </>
