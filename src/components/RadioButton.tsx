@@ -25,15 +25,16 @@ const RadioButton = ({
                 <RadioGroup row name="radio-button-group" className="text-sm">
                     <div className="my-auto mr-[16px]">そう思う</div>
                     <FormControlLabel
+                        className=""
                         value={RadioButtonContent.value1}
-                        control={<Radio />}
+                        control={<Radio className="dark:text-white" />}
                         label=""
                         {...register(RadioButtonContent.registerName)}
                     />
                     {RadioButtonContent.value2 && (
                         <FormControlLabel
                             value={RadioButtonContent.value2}
-                            control={<Radio />}
+                            control={<Radio className="dark:text-white" />}
                             label=""
                             {...register(RadioButtonContent.registerName)}
                         />
@@ -41,7 +42,7 @@ const RadioButton = ({
                     {RadioButtonContent.value3 && (
                         <FormControlLabel
                             value={RadioButtonContent.value3}
-                            control={<Radio />}
+                            control={<Radio className="dark:text-white" />}
                             label=""
                             {...register(RadioButtonContent.registerName)}
                         />
@@ -49,7 +50,7 @@ const RadioButton = ({
                     {RadioButtonContent.value4 && (
                         <FormControlLabel
                             value={RadioButtonContent.value4}
-                            control={<Radio />}
+                            control={<Radio className="dark:text-white" />}
                             label=""
                             {...register(RadioButtonContent.registerName)}
                         />
@@ -57,7 +58,7 @@ const RadioButton = ({
                     {RadioButtonContent.value5 && (
                         <FormControlLabel
                             value={RadioButtonContent.value5}
-                            control={<Radio />}
+                            control={<Radio className="dark:text-white" />}
                             label=""
                             {...register(RadioButtonContent.registerName)}
                         />
