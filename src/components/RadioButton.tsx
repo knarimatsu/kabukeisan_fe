@@ -19,13 +19,16 @@ const RadioButton = ({
     return (
         <>
             <FormControl>
-                <FormLabel className="text-lg">
+                <FormLabel className="text-lg dark:text-white">
                     {RadioButtonContent.label}
                 </FormLabel>
-                <RadioGroup row name="radio-button-group" className="text-sm">
+                <RadioGroup
+                    row
+                    name="radio-button-group"
+                    className="text-sm dark:text-white"
+                >
                     <div className="my-auto mr-[16px]">そう思う</div>
                     <FormControlLabel
-                        className=""
                         value={RadioButtonContent.value1}
                         control={<Radio className="dark:text-white" />}
                         label=""
