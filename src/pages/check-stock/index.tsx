@@ -1,16 +1,27 @@
 import { useForm } from "react-hook-form";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import RadioButton from "../../components/RadioButton";
 import { CHECKSTOCKCONTENT } from "../../utils/CheckStockContent";
+import ModalComponent from "../../components/ModalComponent";
+import { checkStockState } from "../../libs/recoil/atom";
+import { useRecoilState } from "recoil";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
 
 const CheckStock = () => {
     const { register, handleSubmit, reset } = useForm();
+    const [checkStockResult, setCheckStockResult] =
+        useRecoilState(checkStockState);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
     const onSubmit = (data: any) => {
-        console.log(data);
+        setCheckStockResult(data);
+        setModalIsOpen(true);
     };
     return (
         <>
@@ -36,6 +47,15 @@ const CheckStock = () => {
                 />
             </form>
             <Footer />
+            <ModalComponent isOpen={modalIsOpen} closeModal={closeModal}>
+                <div className="px-10 py-8 w-96 border rounded-lg bg-white">
+                    {Object.values(checkStockResult).map((result, key) => (
+                        <p key={key} className="text-center">
+                            {result}
+                        </p>
+                    ))}
+                </div>
+            </ModalComponent>
         </>
     );
 };
