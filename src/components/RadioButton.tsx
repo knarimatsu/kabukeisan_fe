@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { RadioButtonContent } from "../types/CheckStockContentType";
+import {
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup,
+} from "@mui/material";
 
 const RadioButton = ({
     RadioButtonContent,
@@ -11,54 +18,67 @@ const RadioButton = ({
 }) => {
     return (
         <>
-            <label className="block mx-6 mt-6">
-                {RadioButtonContent.label}
-                <div>
-                    <input
-                        className="ml-6"
-                        type="radio"
+            <FormControl className="w-full">
+                <FormLabel className="text-lg dark:text-white">
+                    {RadioButtonContent.label}
+                </FormLabel>
+                <RadioGroup
+                    row
+                    name="radio-button-group"
+                    className="mt-3 mx-auto text-sm dark:text-white"
+                >
+                    <div className="my-auto sm:mr-[16px]">そう思う</div>
+                    <FormControlLabel
                         value={RadioButtonContent.value1}
+                        control={
+                            <Radio className="ml-[8px] mr-[-16px] dark:text-white" />
+                        }
+                        label=""
                         {...register(RadioButtonContent.registerName)}
                     />
-                    {RadioButtonContent.value1}
                     {RadioButtonContent.value2 && (
-                        <input
-                            className="ml-6"
-                            type="radio"
+                        <FormControlLabel
                             value={RadioButtonContent.value2}
+                            control={
+                                <Radio className="mr-[-16px] dark:text-white" />
+                            }
+                            label=""
                             {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {RadioButtonContent.value2 && RadioButtonContent.value2}
                     {RadioButtonContent.value3 && (
-                        <input
-                            className="ml-6"
-                            type="radio"
+                        <FormControlLabel
                             value={RadioButtonContent.value3}
+                            control={
+                                <Radio className="mr-[-16px] dark:text-white" />
+                            }
+                            label=""
                             {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {RadioButtonContent.value3}
                     {RadioButtonContent.value4 && (
-                        <input
-                            className="ml-6"
-                            type="radio"
+                        <FormControlLabel
                             value={RadioButtonContent.value4}
+                            control={
+                                <Radio className="mr-[-16px] dark:text-white" />
+                            }
+                            label=""
                             {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {RadioButtonContent.value4}
                     {RadioButtonContent.value5 && (
-                        <input
-                            className="ml-6"
-                            type="radio"
+                        <FormControlLabel
                             value={RadioButtonContent.value5}
+                            control={
+                                <Radio className="mr-[-16px] dark:text-white" />
+                            }
+                            label=""
                             {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    {RadioButtonContent.value5}
-                </div>
-            </label>
+                    <div className="my-auto mr-[16px]">そう思わない</div>
+                </RadioGroup>
+            </FormControl>
         </>
     );
 };
