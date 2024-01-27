@@ -27,7 +27,7 @@ const Card = ({
             <div className="flex justify-center m-3">
                 <Button
                     variant="contained"
-                    className="bg-[#2e7d32] hover:bg-[#1b5e20]"
+                    className="bg-[#2e7d32] hover:bg-[#1b5e20] button"
                     onClick={toPage}
                 >
                     {t(title)}
