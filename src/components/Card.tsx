@@ -1,5 +1,6 @@
+"use client";
 import { Button } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 const Card = ({
