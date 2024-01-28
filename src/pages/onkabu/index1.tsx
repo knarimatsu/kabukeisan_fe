@@ -38,7 +38,7 @@ const Onkabu = () => {
     };
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl ">{"Onkabu"}</h1>
                 <form

@@ -1,3 +1,4 @@
+"use client";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
