@@ -1,3 +1,4 @@
+"use client";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
@@ -43,7 +44,7 @@ const CheckStock = () => {
                 ))}
                 <input
                     type="submit"
-                    className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-full w-16 mx-auto my-5"
+                    className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
                 />
             </form>
             <Footer />

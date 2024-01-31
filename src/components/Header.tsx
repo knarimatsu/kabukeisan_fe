@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import HomeIcon from "@mui/icons-material/Home";
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
                         className="dark:text-gray-400"
                     />
                 </div>
-                <div className="dark:text-gray-400">{t("header.title")}</div>
+                <div className="dark:text-gray-400">{"株計算ドットコム"}</div>
             </header>
         </>
     );
