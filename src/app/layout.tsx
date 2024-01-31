@@ -1,14 +1,18 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { Layout } from "../components/Layout";
-import { RecoilRoot } from "recoil";
-import "../public/locales/config";
+"use client";
+import "./globals.css";
+import { Inter } from "next/font/google";
 import Head from "next/head";
-import { useTranslation } from "react-i18next";
 import Script from "next/script";
-import type { Session } from "next-auth";
+import { RecoilRoot } from "recoil";
+import { useTranslation } from "react-i18next";
 
-function MyApp({ Component, pageProps }: AppProps<{ session: Session }>) {
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     const { t } = useTranslation();
     return (
         <>
@@ -36,12 +40,10 @@ function MyApp({ Component, pageProps }: AppProps<{ session: Session }>) {
                 crossOrigin="anonymous"
             ></Script>
             <RecoilRoot>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
+                <html lang="en">
+                    <body className={inter.className}>{children}</body>
+                </html>
             </RecoilRoot>
         </>
     );
 }
-
-export default MyApp;
