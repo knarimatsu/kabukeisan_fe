@@ -4,15 +4,7 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
 
-export default function Home({
-    title,
-    description,
-    path,
-}: {
-    title: string;
-    description: string;
-    path: string;
-}) {
+export default function Home() {
     const Header = dynamic(() => import("../components/Header"));
     const Footer = dynamic(() => import("../components/Footer"));
     const Card = dynamic(() => import("../components/Card"));
