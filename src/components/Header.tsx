@@ -21,7 +21,7 @@ const Header = () => {
                         className="dark:text-gray-400"
                     />
                 </div>
-                <div className="dark:text-gray-400">{t("header.title")}</div>
+                <div className="dark:text-gray-400">{"株計算ドットコム"}</div>
             </header>
         </>
     );

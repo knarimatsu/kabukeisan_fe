@@ -35,16 +35,16 @@ const Calc = () => {
     const modalContent = (
         <div className="px-10 py-8 w-96 border rounded-lg bg-white">
             <p>
-                {t("calcValue.companyValue")}: {calcValueResult.pv}
+                {"企業価値"}: {calcValueResult.pv}
             </p>
             <p>
-                {t("calcValue.overReturnValue")}: {calcValueResult.overPv}
+                {"超過リターン価値"}: {calcValueResult.overPv}
             </p>
             <p>
-                {t("calcValue.cost")}: {calcValueResult.cost}
+                {"コスト"}: {calcValueResult.cost}
             </p>
             <p>
-                {t("calcValue.isValue")}: {calcValueResult.isValue}
+                {"割安感"}: {calcValueResult.isValue}
             </p>
         </div>
     );
@@ -59,7 +59,7 @@ const Calc = () => {
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <label htmlFor="buy-price" className="block my-5">
-                        {t("calcValue.marketCap")}
+                        {"時価総額"}
                         <input
                             id="buy-price"
                             {...register("buyPrice")}
@@ -68,7 +68,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="profit" className="block my-5">
-                        {t("calcValue.netProfit")}
+                        {"当期純利益"}
                         <input
                             id="profit"
                             {...register("profit")}
@@ -77,7 +77,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="depreciation" className="block my-5">
-                        {t("calcValue.depreciation")}
+                        {"減価償却費"}
                         <input
                             id="depreciation"
                             {...register("depreciation")}
@@ -86,7 +86,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="investing" className="block my-5">
-                        {t("calcValue.investing")}
+                        {"設備投資"}
                         <input
                             id="investing"
                             {...register("investing")}
@@ -95,7 +95,7 @@ const Calc = () => {
                         />
                     </label>
                     <label htmlFor="roic" className="block my-5">
-                        {t("calcValue.roic")}
+                        {"ROIC"}
                         <input
                             id="roic"
                             {...register("roic")}
@@ -107,7 +107,7 @@ const Calc = () => {
                         <input
                             type="submit"
                             className="border py-1 w-full"
-                            value={t("button.send") as string}
+                            value={"送信"}
                         />
                     </div>
                 </form>

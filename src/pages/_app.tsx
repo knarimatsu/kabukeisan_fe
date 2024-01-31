@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout } from "../components/Layout";
 import { RecoilRoot } from "recoil";
-import "../../src/i18n/config";
+import "../public/locales/config";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import Script from "next/script";

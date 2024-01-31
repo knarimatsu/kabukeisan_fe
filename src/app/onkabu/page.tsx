@@ -47,7 +47,7 @@ const Onkabu = () => {
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
                     <label htmlFor="stock" className="block my-5">
-                        {t("onkabu.stockAmount")}
+                        {"取得株数"}
                         <input
                             id="stock"
                             type="text"
@@ -56,7 +56,7 @@ const Onkabu = () => {
                         />
                     </label>
                     <label htmlFor="buy-price" className="block my-5">
-                        {t("onkabu.stockPrice")}
+                        {"取得株価"}
                         <input
                             id="buy-price"
                             type="text"
@@ -65,7 +65,7 @@ const Onkabu = () => {
                         />
                     </label>
                     <label htmlFor="now-price" className="block my-5">
-                        {t("onkabu.nowPrice")}
+                        {"現在株価"}
                         <input
                             id="now-price"
                             type="text"
@@ -77,7 +77,7 @@ const Onkabu = () => {
                         <input
                             type="submit"
                             className="border py-1 w-full"
-                            value={t("button.send") as string}
+                            value={"送信"}
                         />
                     </div>
                 </form>
