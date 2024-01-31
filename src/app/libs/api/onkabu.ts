@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CalcData } from "../../types/CalcData";
+import { CalcData } from "../../../types/CalcData";
 
 const calcOnkabuUrl = "/calc-onkabu/";
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";

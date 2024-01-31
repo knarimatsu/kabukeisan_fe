@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
 
-import { calcValueState } from "../../libs/recoil/atom";
-import { calcCompanyValue } from "../../libs/service/calc-value";
+import { calcValueState } from "../libs/recoil/atom";
+import { calcCompanyValue } from "../libs/service/calc-value";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import ModalComponent from "../../components/ModalComponent";
+import ModalComponent from "../components/ModalComponent";
 import { PostData } from "../../types/post-data";
 
-const Header = dynamic(() => import("../../components/Header"));
-const Footer = dynamic(() => import("../../components/Footer"));
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({

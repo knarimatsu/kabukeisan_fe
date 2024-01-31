@@ -1,4 +1,4 @@
-import { PostData } from "../../types/post-data";
+import { PostData } from "../../../types/post-data";
 
 export const calcCompanyValue = (data: PostData) => {
     const { buyPrice, profit, depreciation, investing, roic } = data;

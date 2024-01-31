@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { RadioButtonContent } from "../types/CheckStockContentType";
+import { RadioButtonContent } from "../../types/CheckStockContentType";
 import {
     FormControl,
     FormControlLabel,

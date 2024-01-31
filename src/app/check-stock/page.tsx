@@ -2,14 +2,14 @@
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import RadioButton from "../../components/RadioButton";
+import RadioButton from "../components/RadioButton";
 import { CHECKSTOCKCONTENT } from "../../utils/CheckStockContent";
-import ModalComponent from "../../components/ModalComponent";
-import { checkStockState } from "../../libs/recoil/atom";
+import ModalComponent from "../components/ModalComponent";
+import { checkStockState } from "../libs/recoil/atom";
 import { useRecoilState } from "recoil";
 
-const Header = dynamic(() => import("../../components/Header"));
-const Footer = dynamic(() => import("../../components/Footer"));
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 
 const CheckStock = () => {
     const { register, handleSubmit, reset } = useForm();

@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
-import { createUser } from "../../libs/api";
+import { createUser } from "../../app/libs/api";
 
 type InputUserInfo = {
     nickname: string;
