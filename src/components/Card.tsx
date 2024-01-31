@@ -1,5 +1,6 @@
+"use client";
 import { Button } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 const Card = ({
@@ -27,7 +28,7 @@ const Card = ({
             <div className="flex justify-center m-3">
                 <Button
                     variant="contained"
-                    className="bg-[#2e7d32] hover:bg-[#1b5e20]"
+                    className="bg-[#2e7d32] hover:bg-[#1b5e20] button"
                     onClick={toPage}
                 >
                     {t(title)}

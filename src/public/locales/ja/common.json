@@ -1,0 +1,57 @@
+{
+    "header": {
+        "title": "株計算ドットコム"
+    },
+    "index": {
+        "title": {
+            "onkabu": "恩株",
+            "calc": "企業価値計算",
+            "checkStock": "株価チェックリスト",
+            "getAccountData": "財務データ取得",
+            "portfolio": "ポートフォリオ",
+            "signup": "新規登録",
+            "login": "ログイン"
+        },
+        "description": {
+            "onkabu": "恩株とは投資金額を回収した後の持株です。",
+            "calc": "企業価値を計算します。",
+            "checkStock": "株価の定性評価を行います",
+            "getAccountData": "上場企業の財務データを取得します",
+            "portfolio": "保有株を管理します"
+        },
+        "onkabuTitle": "恩株",
+        "calcTitle": "企業価値計算",
+        "calcDescription": "",
+        "checkStockTitle": "株価チェックリスト",
+        "checkStockDescription": ""
+    },
+    "calcValue": {
+        "marketCap": "時価総額",
+        "depreciation": "減価償却費",
+        "netProfit": "当期純利益",
+        "investing": "設備投資",
+        "roic": "ROIC",
+        "companyValue": "企業価値",
+        "overReturnValue": "超過リターン価値",
+        "cost": "コスト",
+        "isValue": "割安感"
+    },
+    "onkabu": {
+        "stockAmount": "取得株数",
+        "stockPrice": "取得株価",
+        "nowPrice": "現在株価"
+    },
+    "portfolio": {
+        "title": "保有株一覧"
+    },
+    "button": {
+        "calc": "計算",
+        "add": "追加",
+        "delete": "削除",
+        "edit": "編集",
+        "save": "保存",
+        "cancel": "キャンセル",
+        "send": "送信",
+        "register": "登録"
+    }
+}
