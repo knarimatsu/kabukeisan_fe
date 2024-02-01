@@ -7,7 +7,6 @@ import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import ModalComponent from "../components/ModalComponent";
-import { calcOnkabu } from "../api/onkabu";
 
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
