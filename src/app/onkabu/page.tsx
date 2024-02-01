@@ -7,6 +7,7 @@ import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import ModalComponent from "../components/ModalComponent";
+import { calcOnkabu } from "../api/onkabu";
 
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
@@ -22,18 +23,18 @@ const Onkabu = () => {
         setModalIsOpen(false);
     };
     const [onkabuResult, setOnkabuResult] = useRecoilState(onkabuResultState);
-    const calcOnkabu = (data: CalcData): void => {
-        const buy = Number(data.buyPrice);
-        const now = Number(data.nowPrice);
-        const stock = Number(data.stock);
-        const onkabu = Math.round(
-            stock - (((now - buy) * 0.79685) / now) * stock
-        );
 
-        if (onkabu < stock) {
-            setOnkabuResult(onkabu + "株売却してください");
+    const calcOnkabu = async (data: CalcData) => {
+        const response = await fetch("/api/onkabu", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data }),
+        });
+        if (response.ok) {
+            const result = await response.json();
+            setOnkabuResult(result.onkabu);
         } else {
-            setOnkabuResult("恩株は作れません");
+            console.log("Error");
         }
         setModalIsOpen(true);
     };
