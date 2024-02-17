@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
-import { onkabuResultState } from "../../libs/recoil/atom";
+import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import ModalComponent from "../../components/ModalComponent";
+import ModalComponent from "../components/ModalComponent";
 
-const Header = dynamic(() => import("../../components/Header"));
-const Footer = dynamic(() => import("../../components/Footer"));
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 
 const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
