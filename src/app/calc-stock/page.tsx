@@ -53,7 +53,8 @@ const Calc = () => {
         <>
             <Header />
             <main className="h-screen dark:bg-black dark:text-gray-400">
-                <h1 className="text-2xl">{t("index.calcTitle")}</h1>
+                {/* <h1 className="text-2xl">{t("index.calcTitle")}</h1> */}
+                <h1 className="text-2xl">{"企業価値計算"}</h1>
                 <form
                     className="w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcValue)}
