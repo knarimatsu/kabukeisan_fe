@@ -41,7 +41,7 @@ const Onkabu = () => {
         <>
             <Header />
             <main className="h-screen dark:bg-black dark:text-gray-400">
-                <h1 className="text-2xl ">{"Onkabu"}</h1>
+                <h1 className="text-2xl ">{"恩株計算"}</h1>
                 <form
                     className="w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
@@ -76,7 +76,8 @@ const Onkabu = () => {
                     <div className="mx-auto w-1/3">
                         <input
                             type="submit"
-                            className="border py-1 w-full"
+                            // className="border py-1 w-full"
+                            className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
                             value={"送信"}
                         />
                     </div>
