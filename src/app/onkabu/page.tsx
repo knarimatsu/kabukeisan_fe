@@ -76,7 +76,8 @@ const Onkabu = () => {
                     <div className="mx-auto w-1/3">
                         <input
                             type="submit"
-                            className="border py-1 w-full"
+                            // className="border py-1 w-full"
+                            className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
                             value={"送信"}
                         />
                     </div>
