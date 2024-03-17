@@ -7,6 +7,7 @@ import { CHECKSTOCKCONTENT } from "../../utils/CheckStockContent";
 import ModalComponent from "../components/ModalComponent";
 import { checkStockState } from "../libs/recoil/atom";
 import { useRecoilState } from "recoil";
+import { getCheckStockResult } from "../../utils/getCheckStockResult";
 
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
@@ -21,7 +22,8 @@ const CheckStock = () => {
         setModalIsOpen(false);
     };
     const onSubmit = (data: any) => {
-        setCheckStockResult(data);
+        const result = getCheckStockResult(data);
+        setCheckStockResult(result);
         setModalIsOpen(true);
     };
     return (
