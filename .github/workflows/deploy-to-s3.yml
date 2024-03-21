@@ -1,0 +1,31 @@
+name: Auto Deploy to S3
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build_and_deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "18"
+
+            - name: Install dependencies
+              run: bun install
+
+            - name: Build
+              run: bun run build
+
+            - name: Deploy to S3
+              run: |
+                  aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws s3 sync ./.next s3://kabukeisan-fe/ --delete
