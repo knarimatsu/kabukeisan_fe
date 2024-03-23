@@ -8,8 +8,6 @@ export default function Home() {
     const Header = dynamic(() => import("./components/Header"));
     const Footer = dynamic(() => import("./components/Footer"));
     const Card = dynamic(() => import("./components/Card"));
-    const router = useRouter();
-    const { t } = useTranslation();
     return (
         <>
             <Header />
