@@ -1,14 +1,9 @@
-import dynamic from "next/dynamic";
 import React from "react";
 import { HEADERCOLUMN } from "../../utils/HeaderColumn";
-
-const Header = dynamic(() => import("../../app/components/Header"));
-const Footer = dynamic(() => import("../../app/components/Footer"));
 
 const Portfolio = () => {
     return (
         <>
-            <Header />
             <main className="h-screen w-full dark:bg-black dark:text-gray-400">
                 <div className="overflow-x-auto pt-4">
                     <table className="overflow-scroll p-4 min-w-min my-auto mx-auto border-solid border-2">
@@ -32,7 +27,6 @@ const Portfolio = () => {
                     </table>
                 </div>
             </main>
-            <Footer />
         </>
     );
 };

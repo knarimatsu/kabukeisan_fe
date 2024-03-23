@@ -5,17 +5,12 @@ import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import ModalComponent from "../components/ModalComponent";
-
-const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
 
 const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
         mode: "onSubmit",
     });
-    const { t } = useTranslation();
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const closeModal = () => {
@@ -39,7 +34,6 @@ const Onkabu = () => {
     };
     return (
         <>
-            <Header />
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl ">{"恩株計算"}</h1>
                 <form
@@ -88,7 +82,6 @@ const Onkabu = () => {
                     </div>
                 </ModalComponent>
             </main>
-            <Footer />
         </>
     );
 };
