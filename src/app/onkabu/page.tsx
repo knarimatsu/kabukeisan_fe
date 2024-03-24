@@ -6,6 +6,8 @@ import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
+import TextForm from "../components/TextForm";
+import { TextField } from "@mui/material";
 
 const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
@@ -40,45 +42,15 @@ const Onkabu = () => {
                     className="sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
-                    <label htmlFor="stock" className="block my-5">
-                        {"取得株数"}
-                        <input
-                            id="stock"
-                            type="text"
-                            {...register("stock")}
-                            className="
-                                block border outline-none py-1 px-3 rounded-md
-                                h-11 w-full text-lg
-                                dark:bg-gray-700
-                            "
-                        />
-                    </label>
-                    <label htmlFor="buy-price" className="block my-5">
-                        {"取得株価"}
-                        <input
-                            id="buy-price"
-                            type="text"
-                            {...register("buyPrice")}
-                            className="
-                                block border outline-none py-1 px-3 rounded-md
-                                h-11 w-full text-lg
-                                dark:bg-gray-700
-                            "
-                        />
-                    </label>
-                    <label htmlFor="now-price" className="block my-5">
-                        {"現在株価"}
-                        <input
-                            id="now-price"
-                            type="text"
-                            {...register("nowPrice")}
-                            className="
-                                block border outline-none py-1 px-3 rounded-md
-                                h-11 w-full text-lg
-                                dark:bg-gray-700
-                            "
-                        />
-                    </label>
+                    <TextForm label="取得株数" register={register("stock")} />
+                    <TextForm
+                        label="取得株価"
+                        register={register("buyPrice")}
+                    />
+                    <TextForm
+                        label="現在株価"
+                        register={register("nowPrice")}
+                    />
                     <div className="mx-auto w-1/3">
                         <input
                             type="submit"

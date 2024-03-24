@@ -8,6 +8,7 @@ import { calcCompanyValue } from "../libs/service/calc-value";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
 import { PostData } from "../../types/post-data";
+import TextForm from "../components/TextForm";
 
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
@@ -54,51 +55,23 @@ const Calc = () => {
                     className="sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcValue)}
                 >
-                    <label htmlFor="buy-price" className="block my-5">
-                        {"時価総額"}
-                        <input
-                            id="buy-price"
-                            {...register("buyPrice")}
-                            type="text"
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
-                        />
-                    </label>
-                    <label htmlFor="profit" className="block my-5">
-                        {"当期純利益"}
-                        <input
-                            id="profit"
-                            {...register("profit")}
-                            type="text"
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
-                        />
-                    </label>
-                    <label htmlFor="depreciation" className="block my-5">
-                        {"減価償却費"}
-                        <input
-                            id="depreciation"
-                            {...register("depreciation")}
-                            type="text"
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
-                        />
-                    </label>
-                    <label htmlFor="investing" className="block my-5">
-                        {"設備投資"}
-                        <input
-                            id="investing"
-                            {...register("investing")}
-                            type="text"
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
-                        />
-                    </label>
-                    <label htmlFor="roic" className="block my-5">
-                        {"ROIC"}
-                        <input
-                            id="roic"
-                            {...register("roic")}
-                            type="text"
-                            className="block border w-full h-9 outline-none p-3 rounded-md"
-                        />
-                    </label>
+                    <TextForm
+                        label="時価総額"
+                        register={register("buyPrice")}
+                    />
+                    <TextForm
+                        label="当期純利益"
+                        register={register("profit")}
+                    />
+                    <TextForm
+                        label="減価償却費"
+                        register={register("depreciation")}
+                    />
+                    <TextForm
+                        label="設備投資"
+                        register={register("investing")}
+                    />
+                    <TextForm label="ROIC" register={register("roic")} />
                     <div className="mx-auto w-24">
                         <input
                             type="submit"
