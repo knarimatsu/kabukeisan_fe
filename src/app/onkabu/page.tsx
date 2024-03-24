@@ -46,7 +46,11 @@ const Onkabu = () => {
                             id="stock"
                             type="text"
                             {...register("stock")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md dark:bg-gray-700"
+                            className="
+                                block border outline-none py-1 px-3 rounded-md
+                                h-11 w-full text-lg
+                                dark:bg-gray-700
+                            "
                         />
                     </label>
                     <label htmlFor="buy-price" className="block my-5">
@@ -55,7 +59,11 @@ const Onkabu = () => {
                             id="buy-price"
                             type="text"
                             {...register("buyPrice")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md dark:bg-gray-700"
+                            className="
+                                block border outline-none py-1 px-3 rounded-md
+                                h-11 w-full text-lg
+                                dark:bg-gray-700
+                            "
                         />
                     </label>
                     <label htmlFor="now-price" className="block my-5">
@@ -64,14 +72,22 @@ const Onkabu = () => {
                             id="now-price"
                             type="text"
                             {...register("nowPrice")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md dark:bg-gray-700"
+                            className="
+                                block border outline-none py-1 px-3 rounded-md
+                                h-11 w-full text-lg
+                                dark:bg-gray-700
+                            "
                         />
                     </label>
                     <div className="mx-auto w-1/3">
                         <input
                             type="submit"
                             // className="border py-1 w-full"
-                            className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
+                            className="
+                                block bg-[#2e7d32] text-white
+                                w-14 py-1 px-3 rounded w-16 mx-auto my-5
+                                hover:bg-[#1b5e20]
+                            "
                             value={"送信"}
                         />
                     </div>
