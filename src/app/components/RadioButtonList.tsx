@@ -27,7 +27,7 @@ const RadioButton = ({
                     name="radio-button-group"
                     className="mt-3 mx-auto text-sm dark:text-white"
                 >
-                    <div className="my-auto sm:mr-[16px]">そう思う</div>
+                    <div className="my-auto sm:mr-[16px]">そう思わない</div>
                     <FormControlLabel
                         value={RadioButtonContent.value1}
                         control={
@@ -76,7 +76,7 @@ const RadioButton = ({
                             {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    <div className="my-auto mr-[16px]">そう思わない</div>
+                    <div className="my-auto mr-[16px]">そう思う</div>
                 </RadioGroup>
             </FormControl>
         </>
