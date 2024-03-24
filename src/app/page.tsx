@@ -5,12 +5,9 @@ import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
 
 export default function Home() {
-    const Header = dynamic(() => import("./components/Header"));
-    const Footer = dynamic(() => import("./components/Footer"));
     const Card = dynamic(() => import("./components/Card"));
     return (
         <>
-            <Header />
             <div className="pb-5 py-10 px-10 dark:bg-black xl:flex xl:h-screen">
                 <Card
                     title={"恩株"}
@@ -28,7 +25,6 @@ export default function Home() {
                     path="check-stock"
                 />
             </div>
-            <Footer />
         </>
     );
 }

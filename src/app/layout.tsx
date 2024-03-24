@@ -5,8 +5,12 @@ import Head from "next/head";
 import Script from "next/script";
 import { RecoilRoot } from "recoil";
 import { useTranslation } from "react-i18next";
+import dynamic from "next/dynamic";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const Header = dynamic(() => import("./components/Header"));
+const Footer = dynamic(() => import("./components/Footer"));
 
 export default function RootLayout({
     children,
@@ -41,7 +45,11 @@ export default function RootLayout({
             ></Script>
             <RecoilRoot>
                 <html lang="en">
-                    <body className={inter.className}>{children}</body>
+                    <body className={inter.className}>
+                        <Header />
+                        {children}
+                        <Footer />
+                    </body>
                 </html>
             </RecoilRoot>
         </>

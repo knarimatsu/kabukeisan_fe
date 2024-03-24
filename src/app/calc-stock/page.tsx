@@ -6,12 +6,8 @@ import { useRecoilState } from "recoil";
 import { calcValueState } from "../libs/recoil/atom";
 import { calcCompanyValue } from "../libs/service/calc-value";
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import ModalComponent from "../components/ModalComponent";
 import { PostData } from "../../types/post-data";
-
-const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
 
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
@@ -51,7 +47,6 @@ const Calc = () => {
 
     return (
         <>
-            <Header />
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 {/* <h1 className="text-2xl">{t("index.calcTitle")}</h1> */}
                 <h1 className="text-2xl">{"企業価値計算"}</h1>
@@ -117,7 +112,6 @@ const Calc = () => {
                     {modalContent}
                 </ModalComponent>
             </main>
-            <Footer />
         </>
     );
 };
