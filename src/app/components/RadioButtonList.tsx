@@ -9,7 +9,7 @@ import {
     RadioGroup,
 } from "@mui/material";
 
-const RadioButton = ({
+const RadioButtonList = ({
     RadioButtonContent,
     register,
 }: {
@@ -83,4 +83,4 @@ const RadioButton = ({
     );
 };
 
-export default RadioButton;
+export default RadioButtonList;

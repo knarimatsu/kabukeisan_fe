@@ -1,8 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
-import RadioButton from "../components/RadioButton";
+import RadioButtonList from "../components/RadioButtonList";
 import { CHECKSTOCKCONTENT } from "../../utils/CheckStockContent";
 import ModalComponent from "../components/ModalComponent";
 import { checkStockState } from "../libs/recoil/atom";
@@ -34,7 +33,7 @@ const CheckStock = () => {
                         key={key}
                         className="sm:mx-10 lg:mx-auto lg:w-1/2 border rounded dark:border-gray-400 dark:bg-gray-800 p-3 mb-3"
                     >
-                        <RadioButton
+                        <RadioButtonList
                             RadioButtonContent={content}
                             register={register}
                         />
