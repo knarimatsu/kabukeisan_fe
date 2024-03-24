@@ -3,9 +3,9 @@ import { render, screen } from "@testing-library/react";
 import Header from "../../app/components/Header";
 import { usePathname } from "next/navigation";
 
-const mockedUserRouter = vi.fn();
+const mockedUseRouter = vi.fn();
 vi.mock("next/navigation", () => ({
-    useRouter: () => mockedUserRouter(),
+    useRouter: () => mockedUseRouter(),
     usePathname: vi.fn().mockReturnValue("/"),
 }));
 
