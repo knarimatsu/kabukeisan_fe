@@ -1,28 +1,30 @@
 "use client";
 
-import { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
+import {
+    FieldValues,
+    UseFormRegister,
+    UseFormRegisterReturn,
+} from "react-hook-form";
 
-const TextForm = ({
-    id,
-    name,
-    ...register
-}: {
-    id: string;
-    name: string;
-    register: any;
-}) => {
-    <>
-        <input
-            id={id}
-            type="text"
-            {...register}
-            className="
+type TextFormProps = {
+    label: string;
+    register: UseFormRegisterReturn;
+};
+
+const TextForm: React.FC<TextFormProps> = ({ label, register }) => {
+    return (
+        <label className="block my-5">
+            {label}
+            <input
+                {...register}
+                className="
                 block border outline-none py-1 px-3 rounded-md
                 h-11 w-full text-lg
                 dark:bg-gray-700
             "
-        />
-    </>;
+            />
+        </label>
+    );
 };
 
 export default TextForm;
