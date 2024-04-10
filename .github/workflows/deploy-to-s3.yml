@@ -15,8 +15,8 @@ jobs:
 
             - name: Check ENV
               run: |
-                  echo "hogehoge" ${{ vars.NEXT_PUBLIC_COGNITO_CLIENT_ID }}　 'hogehog'
-                  echo "hoge"  ${{ vars.NEXT_PUBLIC_COGNITO_USER_POOL_ID }}  "hoge"
+                  echo "hogehoge" ${{ env.NEXT_PUBLIC_COGNITO_CLIENT_ID }}　 'hogehog'
+                  echo "hoge"  ${{ env.NEXT_PUBLIC_COGNITO_USER_POOL_ID }}  "hoge"
 
             - name: Set up Bun
               uses: oven-sh/setup-bun@v1
@@ -31,8 +31,8 @@ jobs:
 
             - name: Build
               env:
-                  NEXT_USER_POOL_ID: ${{ secrets.NEXT_PUBLIC_COGNITO_USER_POOL_ID }}
-                  NEXT_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_COGNITO_CLIENT_ID }}
+                  NEXT_USER_POOL_ID: ${{ env.NEXT_PUBLIC_COGNITO_USER_POOL_ID }}
+                  NEXT_CLIENT_ID: ${{ env.NEXT_PUBLIC_COGNITO_CLIENT_ID }}
               run: bun run build
 
             - name: Deploy to S3
