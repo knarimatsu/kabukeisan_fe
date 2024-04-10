@@ -28,6 +28,9 @@ jobs:
               run: bun install
 
             - name: CONSOLE
+              env:
+                  NEXT_USER_POOL_ID: ${{ secrets.COGNITO_POOL_ID }}
+                  NEXT_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
               run: bun run console
 
             - name: Test
