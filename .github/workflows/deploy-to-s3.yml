@@ -15,8 +15,8 @@ jobs:
 
             - name: Check ENV
               run: |
-                  echo ${{ secrets.NEXT_PUBLIC_COGNITO_CLIENT_ID}}
-                  echo ${{ secrets.NEXT_PUBLIC_COGNITO_USER_POOL_ID}}
+                  echo ${{ vars.NEXT_PUBLIC_COGNITO_CLIENT_ID}}
+                  echo ${{ vars.NEXT_PUBLIC_COGNITO_USER_POOL_ID}}
 
             - name: Set up Bun
               uses: oven-sh/setup-bun@v1
