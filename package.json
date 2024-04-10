@@ -10,7 +10,8 @@
     "export": "next build && next export",
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "console": "node -e \"console.log(process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID)\""
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.549.0",
