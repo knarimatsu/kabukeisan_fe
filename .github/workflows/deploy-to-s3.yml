@@ -15,8 +15,9 @@ jobs:
 
             - name: Check ENV
               run: |
-                  echo "hogehoge" ${{ env.NEXT_PUBLIC_COGNITO_CLIENT_ID }}　 'hogehog'
-                  echo "hoge"  ${{ env.NEXT_PUBLIC_COGNITO_USER_POOL_ID }}  "hoge"
+                  echo ${{ env.TEXT }}
+                  echo ${{ vars.TEXT }}
+                  
 
             - name: Set up Bun
               uses: oven-sh/setup-bun@v1
