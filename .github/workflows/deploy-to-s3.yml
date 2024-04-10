@@ -25,6 +25,9 @@ jobs:
               run: bun run test
 
             - name: Build
+              env:
+                  USER_POOL_ID: ${{ secrets.NEXT_PUBLIC_COGNITO_USER_POOL_ID}}
+                  CLIENT_ID: ${{secrets.NEXT_PUBLIC_COGNITO_CLIENT_ID}}
               run: bun run build
 
             - name: Deploy to S3
