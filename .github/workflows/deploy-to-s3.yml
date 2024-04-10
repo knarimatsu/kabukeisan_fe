@@ -27,6 +27,9 @@ jobs:
             - name: Install dependencies
               run: bun install
 
+            - name: CONSOLE
+              run: bun run console
+
             - name: Test
               run: bun run test
 
