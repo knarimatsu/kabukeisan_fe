@@ -6,11 +6,13 @@ import Script from "next/script";
 import { RecoilRoot } from "recoil";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Header = dynamic(() => import("./components/Header"));
-const Footer = dynamic(() => import("./components/Footer"));
+// const Header = dynamic(() => import("./components/Header"));
+// const Footer = dynamic(() => import("./components/Footer"));
 
 export default function RootLayout({
     children,

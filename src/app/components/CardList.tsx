@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import React from "react";
-const Card = dynamic(() => import("./Card"));
+import Card from "./Card";
 
 const CardList = () => {
     return (

@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
+import Card from "./components/Card";
 
 export default function Home() {
-    const Card = dynamic(() => import("./components/Card"));
     return (
         <>
             <div className="pb-5 py-10 px-10 dark:bg-black xl:flex xl:h-screen">
