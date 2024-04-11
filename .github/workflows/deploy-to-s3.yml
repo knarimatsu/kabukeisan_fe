@@ -40,7 +40,7 @@ jobs:
               env:
                   NEXT_PUBLIC_COGNITO_USER_POOL_ID: ${{ secrets.COGNITO_POOL_ID }}
                   NEXT_PUBLIC_COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
-              run: bun run export
+              run: bun run build
 
             - name: Deploy to S3
               run: |
