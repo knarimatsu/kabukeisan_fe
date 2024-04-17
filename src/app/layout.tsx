@@ -23,9 +23,12 @@ export default function RootLayout({
     return (
         <>
             <Head>
-                <title>{t("header.title")}</title>
-                <link rel="icon" href="../public/favicons/favicon.ico" />
-                <link rel="shortcut icon" href="/favicon.ico" />
+                <title>株計算ドットコム</title>
+                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <meta
+                    name="description"
+                    content="株の計算や企業の評価をするサイト"
+                />
             </Head>
             <Script
                 src={`https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
