@@ -8,9 +8,8 @@ export const onkabuResultState = atom({
 export const calcValueState = atom({
     key: "calcValueState",
     default: {
-        pv: 0,
-        overPv: 0,
-        cost: 0,
+        decadePv: 0,
+        eternalPv: 0,
         isValue: "",
     },
 });
