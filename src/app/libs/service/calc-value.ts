@@ -15,11 +15,10 @@ export const calcCompanyValue = (data: PostData) => {
     };
     const fcf: number =
         Number(profit) + Number(depreciation) - Number(investing);
-    const pv: number = calcPv(fcf);
-    const overPv: number = calcPv(fcf * (overReturn / (Number(roic) / 100)));
-    const cost = calcPv(fcf * (wacc / (Number(roic) / 100)));
+    const decadePv: number = calcPv(fcf);
+    const eternalPv = sumInfiniteGeometricSeries(fcf, 0.05);
     const isValue = () => {
-        const buyPricePvRatio = Number(buyPrice) / pv;
+        const buyPricePvRatio = Number(buyPrice) / decadePv;
         if (buyPricePvRatio <= 1 && buyPricePvRatio > 0 && overReturn > 0) {
             return "安い";
         } else {
@@ -27,9 +26,15 @@ export const calcCompanyValue = (data: PostData) => {
         }
     };
     return {
-        pv: pv,
-        overPv: overPv,
-        cost: cost,
+        decadePv: decadePv,
+        eternalPv: eternalPv,
         isValue: isValue(),
     };
+};
+
+export const sumInfiniteGeometricSeries = (
+    firstTerm: number,
+    commonRatio: number
+): number => {
+    return Math.round(firstTerm * (1 / (1 - 1 / (1 + commonRatio))));
 };
