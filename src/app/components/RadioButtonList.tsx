@@ -8,6 +8,7 @@ import {
     Radio,
     RadioGroup,
 } from "@mui/material";
+import { Height } from "@mui/icons-material";
 
 const RadioButtonList = ({
     RadioButtonContent,
@@ -27,11 +28,17 @@ const RadioButtonList = ({
                     name="radio-button-group"
                     className="mt-3 mx-auto text-sm dark:text-white"
                 >
-                    <div className="my-auto sm:mr-[16px]">そう思わない</div>
                     <FormControlLabel
                         value={RadioButtonContent.value1}
                         control={
-                            <Radio className="ml-[8px] mr-[-16px] dark:text-white" />
+                            <Radio
+                                sx={{
+                                    "& .MuiSvgIcon-root": {
+                                        fontSize: 40,
+                                    },
+                                }}
+                                className="dark:text-white"
+                            />
                         }
                         label=""
                         {...register(RadioButtonContent.registerName)}
@@ -40,7 +47,14 @@ const RadioButtonList = ({
                         <FormControlLabel
                             value={RadioButtonContent.value2}
                             control={
-                                <Radio className="mr-[-16px] dark:text-white" />
+                                <Radio
+                                    sx={{
+                                        "& .MuiSvgIcon-root": {
+                                            fontSize: 35,
+                                        },
+                                    }}
+                                    className="dark:text-white"
+                                />
                             }
                             label=""
                             {...register(RadioButtonContent.registerName)}
@@ -50,7 +64,14 @@ const RadioButtonList = ({
                         <FormControlLabel
                             value={RadioButtonContent.value3}
                             control={
-                                <Radio className="mr-[-16px] dark:text-white" />
+                                <Radio
+                                    sx={{
+                                        "& .MuiSvgIcon-root": {
+                                            fontSize: 30,
+                                        },
+                                    }}
+                                    className="dark:text-white"
+                                />
                             }
                             label=""
                             {...register(RadioButtonContent.registerName)}
@@ -60,7 +81,14 @@ const RadioButtonList = ({
                         <FormControlLabel
                             value={RadioButtonContent.value4}
                             control={
-                                <Radio className="mr-[-16px] dark:text-white" />
+                                <Radio
+                                    sx={{
+                                        "& .MuiSvgIcon-root": {
+                                            fontSize: 35,
+                                        },
+                                    }}
+                                    className="dark:text-white"
+                                />
                             }
                             label=""
                             {...register(RadioButtonContent.registerName)}
@@ -70,14 +98,24 @@ const RadioButtonList = ({
                         <FormControlLabel
                             value={RadioButtonContent.value5}
                             control={
-                                <Radio className="mr-[-16px] dark:text-white" />
+                                <Radio
+                                    sx={{
+                                        "& .MuiSvgIcon-root": {
+                                            fontSize: 40,
+                                        },
+                                    }}
+                                    className="dark:text-white"
+                                />
                             }
                             label=""
                             {...register(RadioButtonContent.registerName)}
                         />
                     )}
-                    <div className="my-auto mr-[16px]">そう思う</div>
                 </RadioGroup>
+                <section className="grid grid-cols-2">
+                    <div className="my-auto text-left">そう思わない</div>
+                    <div className="my-auto text-right">そう思う</div>
+                </section>
             </FormControl>
         </>
     );
