@@ -7,21 +7,22 @@ export const getCheckStockResult = (data: any): GetCheckStockeResult => {
     let normal = [];
     let bad = [];
     let tooBad = [];
+    console.log(data);
     Object.values(data).forEach((element) => {
         switch (element) {
-            case 1:
+            case "1":
                 tooBad.push(element);
                 break;
-            case 2:
+            case "2":
                 bad.push(element);
                 break;
-            case 3:
+            case "3":
                 normal.push(element);
                 break;
-            case 4:
+            case "4":
                 good.push(element);
                 break;
-            case 5:
+            case "5":
                 veryGood.push(element);
                 break;
             default:

@@ -4,11 +4,10 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     trailingSlash: true,
-    // i18n: {
-    //     locales: ["ja", "en"],
-    //     defaultLocale: "ja",
-    // },
-    output: "export",
+    i18n: {
+        locales: ["ja", "en"],
+        defaultLocale: "ja",
+    },
 };
 
 module.exports = nextConfig;

@@ -6,11 +6,13 @@ import Script from "next/script";
 import { RecoilRoot } from "recoil";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Header = dynamic(() => import("./components/Header"));
-const Footer = dynamic(() => import("./components/Footer"));
+// const Header = dynamic(() => import("./components/Header"));
+// const Footer = dynamic(() => import("./components/Footer"));
 
 export default function RootLayout({
     children,
@@ -21,9 +23,12 @@ export default function RootLayout({
     return (
         <>
             <Head>
-                <title>{t("header.title")}</title>
-                <link rel="icon" href="../public/favicons/favicon.ico" />
-                <link rel="shortcut icon" href="/favicon.ico" />
+                <title>株計算ドットコム</title>
+                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <meta
+                    name="description"
+                    content="株の計算や企業の評価をするサイト"
+                />
             </Head>
             <Script
                 src={`https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}

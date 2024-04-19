@@ -1,0 +1,35 @@
+name: Vercel Preview Deploymenr
+env:
+    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+    push:
+        branches:
+            - main
+jobs:
+    Deploy-Preview:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v2
+
+            - name: Set up Bun
+              uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
+
+            - name: Install Vercel CLI
+              run: bun install --global vercel@latest
+
+            - name: Pull Vercel Environment Information
+              run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+            - name: Build
+              run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+            - name: Test
+              run: bun run test
+
+            - name: Deploy
+              run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

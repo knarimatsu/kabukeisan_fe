@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
 import TextForm from "../components/TextForm";
 import { TextField } from "@mui/material";
+import axios from "axios";
 
 const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
@@ -19,19 +20,11 @@ const Onkabu = () => {
         setModalIsOpen(false);
     };
     const [onkabuResult, setOnkabuResult] = useRecoilState(onkabuResultState);
-    const calcOnkabu = (data: CalcData): void => {
-        const buy = Number(data.buyPrice);
-        const now = Number(data.nowPrice);
-        const stock = Number(data.stock);
-        const onkabu = Math.round(
-            stock - (((now - buy) * 0.79685) / now) * stock
+    const calcOnkabu = async (data: CalcData) => {
+        const onkabuResult = await axios.get(
+            `/api/onkabu?buy=${data.buyPrice}&now=${data.nowPrice}&stock=${data.stock}`
         );
-
-        if (onkabu < stock) {
-            setOnkabuResult(onkabu + "株売却してください");
-        } else {
-            setOnkabuResult("恩株は作れません");
-        }
+        setOnkabuResult(onkabuResult.data.data);
         setModalIsOpen(true);
     };
     return (
@@ -39,7 +32,7 @@ const Onkabu = () => {
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 <h1 className="text-2xl ">{"恩株計算"}</h1>
                 <form
-                    className="sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
+                    className="w-80 sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
                     <TextForm label="取得株数" register={register("stock")} />
