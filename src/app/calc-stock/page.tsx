@@ -8,6 +8,7 @@ import { calcCompanyValue } from "../libs/service/calc-value";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
 import { PostData } from "../../types/post-data";
+import axios from "axios";
 
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
@@ -23,21 +24,21 @@ const Calc = () => {
         setModalIsOpen(false);
     };
     const calcValue = async (data: PostData) => {
+        const result = await axios.get(
+            `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}`
+        );
         setModalIsOpen(true);
-        const result = await calcCompanyValue(data);
-        setCalcValueResult(result);
+        console.log(result);
+        setCalcValueResult(result.data.body);
     };
 
     const modalContent = (
         <div className="px-10 py-8 w-96 border rounded-lg bg-white">
             <p>
-                {"企業価値"}: {calcValueResult.pv}
+                {"10年間企業価値"}: {calcValueResult.decadePv}
             </p>
             <p>
-                {"超過リターン価値"}: {calcValueResult.overPv}
-            </p>
-            <p>
-                {"コスト"}: {calcValueResult.cost}
+                {"企業価値"}: {calcValueResult.eternalPv}
             </p>
             <p>
                 {"割安感"}: {calcValueResult.isValue}

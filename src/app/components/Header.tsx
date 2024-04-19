@@ -7,7 +7,7 @@ const Header = () => {
         <>
             <header
                 className="
-                border-b h-12 text-3xl items-center flex
+                h-12 text-3xl items-center flex
                 dark:bg-black
                 "
             >
