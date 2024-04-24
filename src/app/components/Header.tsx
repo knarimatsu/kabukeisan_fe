@@ -32,7 +32,24 @@ const Header = () => {
                         {"株計算ドットコム"}
                     </div>
                 </div>
-                <div className="dark:text-gray-400">{"株計算ドットコム"}</div>
+                {!isLoginOrSignupDisplay && (
+                    <div>
+                        <Button
+                            variant="outlined"
+                            className="border-[#2e7d32] text-[#2e7d32] mr-2 dark:text-white"
+                            onClick={() => router.push("/login")}
+                        >
+                            ログイン
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            className="border-[#2e7d32] text-[#2e7d32] mr-2 dark:text-white"
+                            onClick={() => router.push("/signup")}
+                        >
+                            新規登録
+                        </Button>
+                    </div>
+                )}
             </header>
         </>
     );
