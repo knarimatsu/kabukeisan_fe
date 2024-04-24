@@ -7,6 +7,8 @@ import {
 } from "amazon-cognito-identity-js";
 import { useForm } from "react-hook-form";
 import { UserData } from "../../types/UserData";
+import { useRouter } from "next/navigation";
+import { setCookie } from "nookies";
 
 type PoolData = {
     UserPoolId: string;
@@ -22,6 +24,7 @@ const Login = () => {
     const { register, handleSubmit } = useForm<UserData>({
         mode: "onSubmit",
     });
+    const router = useRouter();
     const login = (data: UserData): void => {
         const authenticationData = {
             Username: data.email,
@@ -39,6 +42,16 @@ const Login = () => {
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 console.log(result.getAccessToken().getJwtToken());
+                setCookie(
+                    null,
+                    "accessToken",
+                    result.getAccessToken().getJwtToken(),
+                    {
+                        maxAge: 30 * 24 * 60 * 60,
+                        path: "/",
+                    }
+                );
+                router.push("/");
             },
             onFailure: function (err) {
                 alert(err.message || JSON.stringify(err));
