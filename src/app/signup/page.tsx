@@ -35,14 +35,13 @@ const CreateUser = () => {
         );
     };
     return (
-        <main className="h-screen dark:bg-black dark:text-gray-400">
-            <h1 className="text-2xl ">{"恩株計算"}</h1>
+        <main className="h-screen py-4 dark:bg-black dark:text-gray-400">
             <form
-                className="w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
+                className="w-96 px-10 py-8  mx-auto border rounded-lg dark:bg-gray-900"
                 onSubmit={handleSubmit(createUser)}
             >
                 <label htmlFor="email" className="block my-5">
-                    {"取得株数"}
+                    {"Email"}
                     <input
                         id="email"
                         type="email"
@@ -51,7 +50,7 @@ const CreateUser = () => {
                     />
                 </label>
                 <label htmlFor="password" className="block my-5">
-                    {"取得株価"}
+                    {"password"}
                     <input
                         id="password"
                         type="password"
