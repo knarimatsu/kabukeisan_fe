@@ -9,6 +9,7 @@ import ModalComponent from "../components/ModalComponent";
 import { PostData } from "../../types/post-data";
 import TextForm from "../components/TextForm";
 import axios from "axios";
+import { Switch } from "@mui/material";
 
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
@@ -28,7 +29,6 @@ const Calc = () => {
             `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}`
         );
         setModalIsOpen(true);
-        console.log(result);
         setCalcValueResult(result.data.body);
     };
 
@@ -38,10 +38,10 @@ const Calc = () => {
                 {"10年間企業価値"}: {calcValueResult.decadePv}
             </p>
             <p>
-                {"企業価値"}: {calcValueResult.eternalPv}
+                {"永続企業価値"}: {calcValueResult.eternalPv}
             </p>
             <p>
-                {"割安感"}: {calcValueResult.isValue}
+                {"割安感"}: {calcValueResult.isValue ? "安い" : "高い"}
             </p>
         </div>
     );
@@ -50,32 +50,31 @@ const Calc = () => {
         <>
             <main className="h-screen dark:bg-black dark:text-gray-400">
                 {/* <h1 className="text-2xl">{t("index.calcTitle")}</h1> */}
-                <h1 className="text-2xl">{"企業価値計算"}</h1>
+                <h1 className="text-2xl text-center">{"企業価値計算"}</h1>
                 <form
                     className="sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcValue)}
                 >
                     <TextForm
-                        label="時価総額"
+                        label="時価総額(百万)"
                         register={register("buyPrice")}
                     />
                     <TextForm
-                        label="当期純利益"
+                        label="当期純利益(百万)"
                         register={register("profit")}
                     />
                     <TextForm
-                        label="減価償却費"
+                        label="減価償却費(百万)"
                         register={register("depreciation")}
                     />
                     <TextForm
-                        label="設備投資"
+                        label="設備投資(百万)"
                         register={register("investing")}
                     />
-                    <TextForm label="ROIC" register={register("roic")} />
+                    <TextForm label="ROIC(%)" register={register("roic")} />
                     <div className="mx-auto w-24">
                         <input
                             type="submit"
-                            // className="border py-1 w-full"
                             className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
                             value={"送信"}
                         />
