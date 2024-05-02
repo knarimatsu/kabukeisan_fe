@@ -30,7 +30,7 @@ const Onkabu = () => {
     return (
         <>
             <main className="h-screen dark:bg-black dark:text-gray-400">
-                <h1 className="text-2xl ">{"恩株計算"}</h1>
+                <h1 className="text-2xl text-center">{"恩株計算"}</h1>
                 <form
                     className="w-80 sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
