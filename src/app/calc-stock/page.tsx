@@ -35,10 +35,16 @@ const Calc = () => {
     const modalContent = (
         <div className="px-10 py-8 w-96 border rounded-lg bg-white">
             <p>
-                {"10年間企業価値"}: {calcValueResult.decadePv}
+                {"10年間企業価値"}: {calcValueResult.decadePv.toLocaleString()}
             </p>
             <p>
-                {"永続企業価値"}: {calcValueResult.eternalPv}
+                {"時価総額の"}: {`${calcValueResult.decadePvRatio}倍`}
+            </p>
+            <p>
+                {"永続企業価値"}: {calcValueResult.eternalPv.toLocaleString()}
+            </p>
+            <p>
+                {"時価総額の"}: {`${calcValueResult.eternalPvRatio}倍`}
             </p>
             <p>
                 {"割安感"}: {calcValueResult.isValue ? "安い" : "高い"}

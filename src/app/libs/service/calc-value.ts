@@ -25,12 +25,12 @@ export const calcCompanyValue = (data: PostData) => {
  * @returns
  */
 export const calcDecadePv = (profit: number): number => {
-    const wacc = 0.01;
+    const interest = 0.05;
     let pv = 0;
     for (let i = 0; i < 10; i++) {
-        pv = pv + profit / (1 + wacc) ** i;
+        pv = pv + profit / (1 + interest) ** i;
     }
-    pv += profit / wacc / (1 + wacc) ** 10;
+    pv += profit / interest / (1 + interest) ** 10;
     pv = Math.round(pv);
     return pv;
 };
@@ -69,5 +69,5 @@ export const isValue = (
 };
 
 export const calcTime = (numerator: number, denominator: number): number => {
-    return Number((numerator / denominator).toFixed(3));
+    return Number((numerator / denominator).toFixed(2));
 };
