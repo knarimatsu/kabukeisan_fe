@@ -11,6 +11,8 @@ export const calcValueState = atom({
         decadePv: 0,
         eternalPv: 0,
         isValue: "",
+        eternalPvRatio: 0,
+        decadePvRatio: 0,
     },
 });
 

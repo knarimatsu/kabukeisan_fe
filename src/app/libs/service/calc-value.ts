@@ -14,6 +14,8 @@ export const calcCompanyValue = (data: PostData) => {
         decadePv: decadePv,
         eternalPv: eternalPv,
         isValue: isValue(buyPrice, decadePv, overReturn),
+        eternalPvRatio: calcTime(eternalPv, buyPrice),
+        decadePvRatio: calcTime(decadePv, buyPrice),
     };
 };
 
@@ -64,4 +66,8 @@ export const isValue = (
     } else {
         return false;
     }
+};
+
+export const calcTime = (numerator: number, denominator: number): number => {
+    return Number((numerator / denominator).toFixed(3));
 };
