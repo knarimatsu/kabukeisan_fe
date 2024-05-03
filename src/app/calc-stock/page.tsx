@@ -26,7 +26,15 @@ const Calc = () => {
     };
     const calcValue = async (data: PostData) => {
         const result = await axios.get(
-            `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}`
+            `/api/calc-stock
+                ?buyPrice=${data.buyPrice}
+                &profit=${data.profit}
+                &depreciation=${data.depreciation}
+                &investing=${data.investing}
+                &roic=${data.roic}
+                &cash=${data.cash}
+                &equity=${data.equity}
+            `
         );
         setModalIsOpen(true);
         setCalcValueResult(result.data.body);
@@ -78,6 +86,11 @@ const Calc = () => {
                         register={register("investing")}
                     />
                     <TextForm label="ROIC(%)" register={register("roic")} />
+                    <TextForm label="現金(百万)" register={register("cash")} />
+                    <TextForm
+                        label="純資産(百万)"
+                        register={register("equity")}
+                    />
                     <div className="mx-auto w-24">
                         <input
                             type="submit"

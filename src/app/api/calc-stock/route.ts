@@ -9,12 +9,16 @@ export async function GET(req: NextRequest) {
     const depreciation = Number(searchParams.get("depreciation"));
     const investing = Number(searchParams.get("investing"));
     const roic = Number(searchParams.get("roic"));
+    const cash = Number(searchParams.get("cash"));
+    const equity = Number(searchParams.get("equity"));
     const data: PostData = {
         buyPrice,
         profit,
         depreciation,
         investing,
         roic,
+        cash,
+        equity,
     };
     const result = await calcCompanyValue(data);
     return NextResponse.json({
