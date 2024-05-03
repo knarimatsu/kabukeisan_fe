@@ -24,35 +24,37 @@ const CheckStock = () => {
     };
     return (
         <>
-            <form
-                className="p-3 dark:bg-black dark:text-gray-400"
-                onSubmit={handleSubmit(onSubmit)}
-            >
-                {CHECKSTOCKCONTENT.map((content, key) => (
-                    <div
-                        key={key}
-                        className="sm:mx-10 lg:mx-auto lg:w-1/2 border rounded dark:border-gray-400 dark:bg-gray-800 p-3 mb-3"
-                    >
-                        <RadioButtonList
-                            RadioButtonContent={content}
-                            register={register}
-                        />
-                    </div>
-                ))}
-                <input
-                    type="submit"
-                    className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
-                />
-            </form>
-            <ModalComponent isOpen={modalIsOpen} closeModal={closeModal}>
-                <div className="px-10 py-8 w-96 border rounded-lg bg-white">
-                    {Object.values(checkStockResult).map((result, key) => (
-                        <p key={key} className="text-center">
-                            {result}
-                        </p>
+            <main className="h-screen overflow-auto dark:bg-black dark:text-gray-400">
+                <form
+                    className="p-3 dark:bg-black dark:text-gray-400"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
+                    {CHECKSTOCKCONTENT.map((content, key) => (
+                        <div
+                            key={key}
+                            className="sm:mx-10 lg:mx-auto lg:w-1/2 border rounded dark:border-gray-400 dark:bg-gray-800 p-3 mb-3"
+                        >
+                            <RadioButtonList
+                                RadioButtonContent={content}
+                                register={register}
+                            />
+                        </div>
                     ))}
-                </div>
-            </ModalComponent>
+                    <input
+                        type="submit"
+                        className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
+                    />
+                </form>
+                <ModalComponent isOpen={modalIsOpen} closeModal={closeModal}>
+                    <div className="px-10 py-8 w-96 border rounded-lg bg-white">
+                        {Object.values(checkStockResult).map((result, key) => (
+                            <p key={key} className="text-center">
+                                {result}
+                            </p>
+                        ))}
+                    </div>
+                </ModalComponent>
+            </main>
         </>
     );
 };

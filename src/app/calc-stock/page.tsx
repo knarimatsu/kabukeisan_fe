@@ -62,7 +62,7 @@ const Calc = () => {
 
     return (
         <>
-            <main className="h-screen dark:bg-black dark:text-gray-400">
+            <main className="h-screen overflow-auto dark:bg-black dark:text-gray-400">
                 {/* <h1 className="text-2xl">{t("index.calcTitle")}</h1> */}
                 <h1 className="text-2xl text-center">{"企業価値計算"}</h1>
                 <form
