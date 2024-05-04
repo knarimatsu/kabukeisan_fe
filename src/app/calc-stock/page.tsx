@@ -78,23 +78,25 @@ const Calc = () => {
                         register={register("buyPrice")}
                     />
                     <TextForm
-                        label="当期純利益(百万)"
-                        register={register("profit")}
-                    />
-                    <TextForm
-                        label="減価償却費(百万)"
-                        register={register("depreciation")}
+                        label="純資産(百万)"
+                        register={register("equity")}
                     />
                     <TextForm
                         label="設備投資(百万)"
                         register={register("investing")}
                     />
-                    <TextForm label="ROIC(%)" register={register("roic")} />
-                    <TextForm label="現金(百万)" register={register("cash")} />
                     <TextForm
-                        label="純資産(百万)"
-                        register={register("equity")}
+                        label="減価償却費(百万)"
+                        register={register("depreciation")}
                     />
+                    <TextForm label="現金(百万)" register={register("cash")} />
+
+                    <TextForm
+                        label="当期純利益(百万)"
+                        register={register("profit")}
+                    />
+                    {/* <TextForm label="ROIC(%)" register={register("roic")} /> */}
+
                     <div className="mx-auto w-24">
                         <input
                             type="submit"
