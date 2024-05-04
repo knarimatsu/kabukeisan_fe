@@ -1,12 +1,12 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
 import axios from "axios";
+import TelForm from "../components/Forms/TelForm";
 
 const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
@@ -27,44 +27,24 @@ const Onkabu = () => {
     };
     return (
         <>
-            <main className="h-screen dark:bg-black dark:text-gray-400">
-                <h1 className="text-2xl ">{"恩株計算"}</h1>
+            <main className="h-screen overflow-auto dark:bg-black dark:text-gray-400">
+                <h1 className="text-2xl text-center">{"恩株計算"}</h1>
                 <form
-                    className="w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
+                    className="w-80 sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
-                    <label htmlFor="stock" className="block my-5">
-                        {"取得株数"}
-                        <input
-                            id="stock"
-                            type="text"
-                            {...register("stock")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md dark:bg-gray-700"
-                        />
-                    </label>
-                    <label htmlFor="buy-price" className="block my-5">
-                        {"取得株価"}
-                        <input
-                            id="buy-price"
-                            type="text"
-                            {...register("buyPrice")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md dark:bg-gray-700"
-                        />
-                    </label>
-                    <label htmlFor="now-price" className="block my-5">
-                        {"現在株価"}
-                        <input
-                            id="now-price"
-                            type="text"
-                            {...register("nowPrice")}
-                            className="block border w-full h-9 outline-none p-3 rounded-md dark:bg-gray-700"
-                        />
-                    </label>
+                    <TelForm label="取得株数" register={register("stock")} />
+                    <TelForm label="取得株価" register={register("buyPrice")} />
+                    <TelForm label="現在株価" register={register("nowPrice")} />
                     <div className="mx-auto w-1/3">
                         <input
                             type="submit"
                             // className="border py-1 w-full"
-                            className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
+                            className="
+                                block bg-[#2e7d32] text-white
+                                w-14 py-1 px-3 rounded w-16 mx-auto my-5
+                                hover:bg-[#1b5e20]
+                            "
                             value={"送信"}
                         />
                     </div>

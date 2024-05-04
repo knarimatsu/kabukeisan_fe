@@ -8,7 +8,6 @@ import {
     Radio,
     RadioGroup,
 } from "@mui/material";
-import { Height } from "@mui/icons-material";
 
 const RadioButtonList = ({
     RadioButtonContent,
