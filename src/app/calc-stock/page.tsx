@@ -26,15 +26,7 @@ const Calc = () => {
     };
     const calcValue = async (data: PostData) => {
         const result = await axios.get(
-            `/api/calc-stock
-                ?buyPrice=${data.buyPrice}
-                &profit=${data.profit}
-                &depreciation=${data.depreciation}
-                &investing=${data.investing}
-                &roic=${data.roic}
-                &cash=${data.cash}
-                &equity=${data.equity}
-            `
+            `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}&cash=${data.cash}&equity=${data.equity}`
         );
         setModalIsOpen(true);
         setCalcValueResult(result.data.body);
