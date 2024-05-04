@@ -7,9 +7,8 @@ import { calcValueState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
 import { PostData } from "../../types/post-data";
-import TextForm from "../components/TextForm";
 import axios from "axios";
-import { Switch } from "@mui/material";
+import TelForm from "../components/Forms/TelForm";
 
 const Calc = () => {
     const { register, handleSubmit } = useForm<PostData>({
@@ -73,25 +72,25 @@ const Calc = () => {
                     className="sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcValue)}
                 >
-                    <TextForm
+                    <TelForm
                         label="時価総額(百万)"
                         register={register("buyPrice")}
                     />
-                    <TextForm
+                    <TelForm
                         label="純資産(百万)"
                         register={register("equity")}
                     />
-                    <TextForm
+                    <TelForm
                         label="設備投資(百万)"
                         register={register("investing")}
                     />
-                    <TextForm
+                    <TelForm
                         label="減価償却費(百万)"
                         register={register("depreciation")}
                     />
-                    <TextForm label="現金(百万)" register={register("cash")} />
+                    <TelForm label="現金(百万)" register={register("cash")} />
 
-                    <TextForm
+                    <TelForm
                         label="当期純利益(百万)"
                         register={register("profit")}
                     />
