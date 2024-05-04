@@ -37,17 +37,29 @@ const Calc = () => {
             <p>
                 {"10年間企業価値"}: {calcValueResult.decadePv.toLocaleString()}
             </p>
-            <p>
+            <p className="text-xl font-black text-emerald-500">
                 {"時価総額の"}: {`${calcValueResult.decadePvRatio}倍`}
             </p>
+            <hr />
             <p>
                 {"永続企業価値"}: {calcValueResult.eternalPv.toLocaleString()}
             </p>
-            <p>
+            <p className="text-xl font-black text-emerald-500">
                 {"時価総額の"}: {`${calcValueResult.eternalPvRatio}倍`}
             </p>
+            <hr />
             <p>
-                {"割安感"}: {calcValueResult.isValue ? "安い" : "高い"}
+                {"株主資本"}: {calcValueResult.eternalPv.toLocaleString()}
+            </p>
+            <p className="text-xl font-black text-emerald-500">
+                {"時価総額の"}: {`${(1 / calcValueResult.pbr).toFixed(2)}倍`}
+            </p>
+            <p>
+                {"PBR"}: {`${calcValueResult.pbr}`}
+            </p>
+            <hr />
+            <p>
+                {"PER"}: {`${calcValueResult.per}`}
             </p>
         </div>
     );
