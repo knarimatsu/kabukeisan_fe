@@ -1,7 +1,8 @@
 import { PostData } from "../../../types/post-data";
 
 export const calcCompanyValue = (data: PostData) => {
-    const { buyPrice, profit, depreciation, investing, roic } = data;
+    const { buyPrice, profit, depreciation, investing, roic, cash, equity } =
+        data;
     const wacc = 0.1;
     const interest = 0.05;
     const overReturn: number = roic / 100 - wacc;
@@ -16,6 +17,8 @@ export const calcCompanyValue = (data: PostData) => {
         isValue: isValue(buyPrice, decadePv, overReturn),
         eternalPvRatio: calcTime(eternalPv, buyPrice),
         decadePvRatio: calcTime(decadePv, buyPrice),
+        pbr: calcTime(buyPrice, Number(equity)),
+        per: calcTime(buyPrice, Number(profit)),
     };
 };
 
