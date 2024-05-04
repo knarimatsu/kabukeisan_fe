@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
-import TextForm from "../components/TextForm";
+import TextForm from "../components/Forms/TextForm";
 import { TextField } from "@mui/material";
 import axios from "axios";
 
