@@ -1,14 +1,12 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
 import ModalComponent from "../components/ModalComponent";
-import TextForm from "../components/TextForm";
-import { TextField } from "@mui/material";
 import axios from "axios";
+import TelForm from "../components/Forms/TelForm";
 
 const Onkabu = () => {
     const { register, handleSubmit } = useForm<CalcData>({
@@ -29,21 +27,15 @@ const Onkabu = () => {
     };
     return (
         <>
-            <main className="h-screen dark:bg-black dark:text-gray-400">
-                <h1 className="text-2xl ">{"恩株計算"}</h1>
+            <main className="h-screen overflow-auto dark:bg-black dark:text-gray-400">
+                <h1 className="text-2xl text-center">{"恩株計算"}</h1>
                 <form
                     className="w-80 sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
                     onSubmit={handleSubmit(calcOnkabu)}
                 >
-                    <TextForm label="取得株数" register={register("stock")} />
-                    <TextForm
-                        label="取得株価"
-                        register={register("buyPrice")}
-                    />
-                    <TextForm
-                        label="現在株価"
-                        register={register("nowPrice")}
-                    />
+                    <TelForm label="取得株数" register={register("stock")} />
+                    <TelForm label="取得株価" register={register("buyPrice")} />
+                    <TelForm label="現在株価" register={register("nowPrice")} />
                     <div className="mx-auto w-1/3">
                         <input
                             type="submit"

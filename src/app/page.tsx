@@ -1,8 +1,4 @@
 "use client";
-
-import { useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
-import dynamic from "next/dynamic";
 import Card from "./components/Card";
 
 export default function Home() {
