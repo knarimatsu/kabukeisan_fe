@@ -1,64 +1,96 @@
 "use client";
-import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
 
-import { calcValueState } from "../libs/recoil/atom";
+import {
+    calcValueStateByScouter,
+    calcValueStateByShikiho,
+} from "../libs/recoil/atom";
 import React, { useState } from "react";
-import ModalComponent from "../components/ModalComponent";
-import { PostData } from "../../types/post-data";
-import axios from "axios";
-import TelForm from "../components/Forms/TelForm";
+import ModalComponent from "../components/Dialogs/ModalComponent";
+import ToggleSwitch from "../components/Buttons/ToggleSwitch";
+import Shikiho from "./Shikiho";
+import Scouter from "./Scouter";
 
 const Calc = () => {
-    const { register, handleSubmit } = useForm<PostData>({
-        mode: "onSubmit",
-    });
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [isShikiho, setIsShikiho] = useState(true);
     const { t } = useTranslation();
-    const [calcValueResult, setCalcValueResult] =
-        useRecoilState(calcValueState);
+    const [calcValueResultByShikiho, setCalcValueResultByShikiho] =
+        useRecoilState(calcValueStateByShikiho);
+    const [calsValueResultByScouter, setCalsValueResultByScouter] =
+        useRecoilState(calcValueStateByScouter);
 
     const closeModal = () => {
         setModalIsOpen(false);
     };
-    const calcValue = async (data: PostData) => {
-        const result = await axios.get(
-            `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}&cash=${data.cash}&equity=${data.equity}`
-        );
-        setModalIsOpen(true);
-        setCalcValueResult(result.data.body);
-    };
 
-    const modalContent = (
+    const modalContent = isShikiho ? (
         <div className="px-10 py-8 w-96 border rounded-lg bg-white">
             <p>
-                {"10年間企業価値"}: {calcValueResult.decadePv.toLocaleString()}
+                {"10年間企業価値"}:{" "}
+                {calcValueResultByShikiho.decadePv.toLocaleString()}
             </p>
             <p className="text-xl font-black text-emerald-500">
-                {"時価総額の"}: {`${calcValueResult.decadePvRatio}倍`}
+                {"時価総額の"}: {`${calcValueResultByShikiho.decadePvRatio}倍`}
             </p>
             <hr />
             <p>
-                {"永続企業価値"}: {calcValueResult.eternalPv.toLocaleString()}
+                {"永続企業価値"}:{" "}
+                {calcValueResultByShikiho.eternalPv.toLocaleString()}
             </p>
             <p className="text-xl font-black text-emerald-500">
-                {"時価総額の"}: {`${calcValueResult.eternalPvRatio}倍`}
+                {"時価総額の"}: {`${calcValueResultByShikiho.eternalPvRatio}倍`}
             </p>
             <hr />
             <p>
-                {"株主資本"}: {calcValueResult.eternalPv.toLocaleString()}
+                {"株主資本"}:{" "}
+                {calcValueResultByShikiho.eternalPv.toLocaleString()}
             </p>
             <p className="text-xl font-black text-emerald-500">
-                {"時価総額の"}: {`${(1 / calcValueResult.pbr).toFixed(2)}倍`}
+                {"時価総額の"}:{" "}
+                {`${(1 / calcValueResultByShikiho.pbr).toFixed(2)}倍`}
             </p>
             <p>
-                {"PBR"}: {`${calcValueResult.pbr}`}
+                {"PBR"}: {`${calcValueResultByShikiho.pbr}`}
             </p>
             <hr />
             <p>
-                {"PER"}: {`${calcValueResult.per}`}
+                {"PER"}: {`${calcValueResultByShikiho.per}`}
+            </p>
+        </div>
+    ) : (
+        <div className="px-10 py-8 w-96 border rounded-lg bg-white">
+            <p>
+                {"10年間企業価値"}:{" "}
+                {calsValueResultByScouter.decadePv.toLocaleString()}
+            </p>
+            <p className="text-xl font-black text-emerald-500">
+                {"時価総額の"}: {`${calsValueResultByScouter.decadePvRatio}倍`}
+            </p>
+            <hr />
+            <p>
+                {"永続企業価値"}:{" "}
+                {calsValueResultByScouter.eternalPv.toLocaleString()}
+            </p>
+            <p className="text-xl font-black text-emerald-500">
+                {"時価総額の"}: {`${calsValueResultByScouter.eternalPvRatio}倍`}
+            </p>
+            <hr />
+            <p>
+                {"株主資本"}:{" "}
+                {calsValueResultByScouter.eternalPv.toLocaleString()}
+            </p>
+            <p className="text-xl font-black text-emerald-500">
+                {"時価総額の"}:{" "}
+                {`${(1 / calsValueResultByScouter.pbr).toFixed(2)}倍`}
+            </p>
+            <p>
+                {"PBR"}: {`${calsValueResultByScouter.pbr}`}
+            </p>
+            <hr />
+            <p>
+                {"PER"}: {`${calsValueResultByScouter.per}`}
             </p>
         </div>
     );
@@ -67,43 +99,26 @@ const Calc = () => {
         <>
             <main className="h-screen overflow-auto dark:bg-black dark:text-gray-400">
                 {/* <h1 className="text-2xl">{t("index.calcTitle")}</h1> */}
-                <h1 className="text-2xl text-center">{"企業価値計算"}</h1>
-                <form
-                    className="sm:w-96 px-10 py-8 my-4 mx-auto border rounded-lg dark:bg-gray-900"
-                    onSubmit={handleSubmit(calcValue)}
-                >
-                    <TelForm
-                        label="時価総額(百万)"
-                        register={register("buyPrice")}
+                <h1 className="text-2xl text-center mb-5">{"企業価値計算"}</h1>
+                <ToggleSwitch
+                    isFirstLabel={isShikiho}
+                    firstLabel="四季報"
+                    secondLabel="スカウター"
+                    changeState={setIsShikiho}
+                />
+                {isShikiho ? (
+                    <Shikiho
+                        setModalIsOpen={setModalIsOpen}
+                        setCalcValueResultBySikiho={setCalcValueResultByShikiho}
                     />
-                    <TelForm
-                        label="純資産(百万)"
-                        register={register("equity")}
+                ) : (
+                    <Scouter
+                        setModalIsOpen={setModalIsOpen}
+                        setCalcValueResultByScouter={
+                            setCalsValueResultByScouter
+                        }
                     />
-                    <TelForm
-                        label="設備投資(百万)"
-                        register={register("investing")}
-                    />
-                    <TelForm
-                        label="減価償却費(百万)"
-                        register={register("depreciation")}
-                    />
-                    <TelForm label="現金(百万)" register={register("cash")} />
-
-                    <TelForm
-                        label="当期純利益(百万)"
-                        register={register("profit")}
-                    />
-                    {/* <TextForm label="ROIC(%)" register={register("roic")} /> */}
-
-                    <div className="mx-auto w-24">
-                        <input
-                            type="submit"
-                            className="block bg-[#2e7d32] hover:bg-[#1b5e20] text-white w-14 py-1 px-3 rounded w-16 mx-auto my-5"
-                            value={"送信"}
-                        />
-                    </div>
-                </form>
+                )}
                 <ModalComponent isOpen={modalIsOpen} closeModal={closeModal}>
                     {modalContent}
                 </ModalComponent>
