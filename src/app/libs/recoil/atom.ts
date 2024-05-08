@@ -5,8 +5,8 @@ export const onkabuResultState = atom({
     default: "",
 });
 
-export const calcValueState = atom({
-    key: "calcValueState",
+export const calcValueStateByShikiho = atom({
+    key: "calcValueStateBySikiho",
     default: {
         decadePv: 0,
         eternalPv: 0,
@@ -15,6 +15,20 @@ export const calcValueState = atom({
         decadePvRatio: 0,
         per: 0,
         pbr: 0,
+    },
+});
+
+export const calcValueStateByScouter = atom({
+    key: "calcValueStateByScouter",
+    default: {
+        decadePv: 0,
+        eternalPv: 0,
+        isValue: "",
+        eternalPvRatio: 0,
+        decadePvRatio: 0,
+        per: 0,
+        pbr: 0,
+        nuetralPER: 0,
     },
 });
 
