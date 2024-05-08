@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import RadioButtonList from "../components/RadioButtonList";
 import { CHECKSTOCKCONTENT } from "../../utils/CheckStockContent";
-import ModalComponent from "../components/ModalComponent";
+import ModalComponent from "../components/Dialogs/ModalComponent";
 import { checkStockState } from "../libs/recoil/atom";
 import { useRecoilState } from "recoil";
 import { getCheckStockResult } from "../../utils/getCheckStockResult";

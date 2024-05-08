@@ -1,24 +1,41 @@
-import { PostData } from "../../../types/post-data";
+import { PostData, ScouterData } from "../../../types/post-data";
 
-export const calcCompanyValue = (data: PostData) => {
-    const { buyPrice, profit, depreciation, investing, roic, cash, equity } =
-        data;
-    const wacc = 0.1;
+export const calcCompanyValue = <T extends ScouterData>(data: T) => {
+    const {
+        buyPrice,
+        profit,
+        depreciation,
+        investing,
+        roic,
+        cash,
+        equity,
+        currentAsset,
+        securities,
+        debt,
+    } = data;
     const interest = 0.05;
-    const overReturn: number = roic / 100 - wacc;
-    const fcf: number =
+    const netCash =
+        Number(currentAsset) + Number(securities) * 0.7 - Number(debt);
+    const netCashRatio = netCash / Number(buyPrice);
+    const freeCachFlow: number =
         Number(profit) + Number(depreciation) - Number(investing);
-    const decadePv: number = calcDecadePv(fcf);
-    const eternalPv = sumInfiniteGeometricSeries(fcf, 1 / (1 + interest));
+
+    const decadePv: number = calcDecadePv(freeCachFlow);
+    const eternalPv = sumInfiniteGeometricSeries(
+        freeCachFlow,
+        1 / (1 + interest)
+    );
+    const neutralPER = calcTime(buyPrice, Number(profit)) * (1 - netCashRatio);
 
     return {
+        requestData: data,
         decadePv: decadePv,
         eternalPv: eternalPv,
-        isValue: isValue(buyPrice, decadePv, overReturn),
         eternalPvRatio: calcTime(eternalPv, buyPrice),
         decadePvRatio: calcTime(decadePv, buyPrice),
         pbr: calcTime(buyPrice, Number(equity)),
         per: calcTime(buyPrice, Number(profit)),
+        neutralPER: calcTime(buyPrice, Number(profit)) * (1 - netCashRatio),
     };
 };
 

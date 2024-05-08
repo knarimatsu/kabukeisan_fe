@@ -4,7 +4,7 @@ import { CalcData } from "../../types/CalcData";
 import { useRecoilState } from "recoil";
 import { onkabuResultState } from "../libs/recoil/atom";
 import React, { useState } from "react";
-import ModalComponent from "../components/ModalComponent";
+import ModalComponent from "../components/Dialogs/ModalComponent";
 import axios from "axios";
 import TelForm from "../components/Forms/TelForm";
 
