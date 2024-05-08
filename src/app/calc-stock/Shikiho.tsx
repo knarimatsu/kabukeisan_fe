@@ -27,17 +27,7 @@ const Shikiho: React.FC<Props> = ({
     });
     const calcShikiho = async (data: PostData) => {
         const result = await axios.get(
-            `
-            /api/calc-stock
-            ?buyPrice=${data.buyPrice}
-            &profit=${data.profit}
-            &depreciation=${data.depreciation}
-            &investing=${data.investing}
-            &roic=${data.roic}
-            &cash=${data.cash}
-            &equity=${data.equity}
-            &isShikiho=true
-            `
+            `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}&cash=${data.cash}&equity=${data.equity}&isShikiho=true`
         );
         setModalIsOpen(true);
         setCalcValueResultBySikiho(result.data.body);
