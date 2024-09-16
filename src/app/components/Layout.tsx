@@ -3,5 +3,5 @@ type AppLayoutProps = {
 };
 
 export const Layout = ({ children }: AppLayoutProps) => {
-    return <div>{children}</div>;
+  return <div>{children}</div>;
 };
