@@ -7,16 +7,16 @@ type ToggleSwitchProps = {
     changeState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
-    isFirstLabel,
-    firstLabel,
-    secondLabel,
-    changeState,
+  isFirstLabel,
+  firstLabel,
+  secondLabel,
+  changeState,
 }) => {
-    return (
-        <>
-            <div className="flex justify-center text-center">
-                <div
-                    className={`w-32
+  return (
+    <>
+      <div className="flex justify-center text-center">
+        <div
+          className={`w-32
                         bg-${isFirstLabel ? "[#2e7d32]" : ""}
                         text-${isFirstLabel ? "white" : ""}
                         px-2 py-0.5
@@ -24,12 +24,12 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
                         border-t border-l border-b
                         cursor-pointer
                     `}
-                    onClick={() => changeState(true)}
-                >
-                    {firstLabel}
-                </div>
-                <div
-                    className={`
+          onClick={() => changeState(true)}
+        >
+          {firstLabel}
+        </div>
+        <div
+          className={`
                         w-32
                         bg-${isFirstLabel ? "" : "[#2e7d32]"}
                         text-${isFirstLabel ? "" : "white"}
@@ -38,13 +38,13 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
                         border
                         cursor-pointer
                     `}
-                    onClick={() => changeState(false)}
-                >
-                    {secondLabel}
-                </div>
-            </div>
-        </>
-    );
+          onClick={() => changeState(false)}
+        >
+          {secondLabel}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ToggleSwitch;
