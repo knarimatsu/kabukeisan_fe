@@ -33,19 +33,19 @@ const Calc = () => {
     data = isShikiho ? calcValueResultByShikiho : calcValueResultByScouter;
     return (
       <div className="px-10 py-8 w-96 border rounded-lg bg-white">
-        <p>
+        <p className="text-xl font-black text-emerald-500">
           {'現在価値'}: {data.pv}
         </p>
         <p>{(data.pv / data.marketCapital).toFixed(1)}</p>
-        <p>
+        <p className="text-xl font-black text-emerald-500">
           {'超過リターン'}: {data.excessPV}
         </p>
         <p>{(data.excessPV / data.marketCapital).toFixed(1)}</p>
-        <p>
+        <p className="text-xl font-black text-emerald-500">
           {'資本費用'}: {data.costPV}
         </p>
         <p>{(data.costPV / data.marketCapital).toFixed(1)}</p>
-        <p>
+        <p className="text-xl font-black text-emerald-500">
           {'時価総額'}: {data.marketCapital}
         </p>
       </div>
