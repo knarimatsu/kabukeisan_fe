@@ -1,6 +1,26 @@
-import { PostData, ScouterData } from "../../../types/post-data";
+import { ScouterData, ShikihoData } from '../../../types/post-data';
+import { CalcValueResult } from '../recoil/atom';
 
-export const calcCompanyValue = <T extends ScouterData>(data: T) => {
+export interface DfcCalculatorReturn {
+  pv: number;
+  excessPV: number;
+  costPV: number;
+}
+
+export const calcCompanyValueByShikiho = async <T extends ShikihoData>(params: T) => {
+  const { buyPrice, profit, depreciation, investing, equity, debt } = params;
+  const freeCachFlow = profit + depreciation - investing;
+  const investedCapital = equity + debt;
+  const roic = Number((freeCachFlow / investedCapital).toFixed(2));
+  return {
+    marketCapital: buyPrice,
+    ...(await dfcCalculator(freeCachFlow, roic, 10)),
+  };
+};
+
+export const calcCompanyValueByScoutor = async <T extends ScouterData>(
+  data: T,
+): Promise<CalcValueResult> => {
   const {
     buyPrice,
     profit,
@@ -13,30 +33,42 @@ export const calcCompanyValue = <T extends ScouterData>(data: T) => {
     securities,
     debt,
   } = data;
-  const interest = 0.05;
-  const netCash =
-        Number(currentAsset) + Number(securities) * 0.7 - Number(debt);
-  const netCashRatio = netCash / Number(buyPrice);
-  const freeCachFlow: number =
-        Number(profit) + Number(depreciation) - Number(investing);
 
-  const decadePv: number = calcDecadePv(freeCachFlow);
-  const eternalPv = sumInfiniteGeometricSeries(
-    freeCachFlow,
-    1 / (1 + interest)
-  );
-  const neutralPER = calcTime(buyPrice, Number(profit)) * (1 - netCashRatio);
-
+  const netCash = Number(currentAsset) + Number(securities) * 0.7 - Number(debt);
+  const freeCachFlow: number = Number(profit) + Number(depreciation) - Number(investing);
   return {
-    requestData: data,
-    decadePv: decadePv,
-    eternalPv: eternalPv,
-    eternalPvRatio: calcTime(eternalPv, buyPrice),
-    decadePvRatio: calcTime(decadePv, buyPrice),
-    pbr: calcTime(buyPrice, Number(equity)),
-    per: calcTime(buyPrice, Number(profit)),
-    neutralPER: calcTime(buyPrice, Number(profit)) * (1 - netCashRatio),
+    marketCapital: buyPrice,
+    ...(await dfcCalculator(freeCachFlow, roic, 10)),
   };
+};
+
+export const dfcCalculator = async (
+  fcf: number,
+  roic: number,
+  year: number,
+): Promise<DfcCalculatorReturn> => {
+  const investing = Math.ceil(fcf / (roic / 100));
+  const capitalCost = 0.1;
+  const excessReturn = Math.ceil(roic / 100 - capitalCost);
+  const excessProfit = investing * excessReturn;
+  const cost = investing * capitalCost;
+  let pv = 0;
+  let excessPV = 0;
+  let costPV = 0;
+  for (let i = 0; i < year; i++) {
+    excessPV += excessProfit / 1.1 ** (year + 1);
+    costPV += cost / 1.1 ** (year + 1);
+  }
+  excessPV += excessProfit / 0.1 / 1.1 ** 6;
+  costPV += cost / 0.1 / 1.1 ** 6;
+  pv = excessPV + costPV;
+  return new Promise<DfcCalculatorReturn>((resolve) => {
+    resolve({
+      pv: Math.ceil(pv),
+      excessPV: Math.ceil(excessPV),
+      costPV: Math.ceil(costPV),
+    });
+  });
 };
 
 /**
@@ -63,7 +95,7 @@ export const calcDecadePv = (profit: number): number => {
  */
 export const sumInfiniteGeometricSeries = (
   firstTerm: number,
-  commonRatio: number
+  commonRatio: number,
 ): number => {
   return Math.round(firstTerm / (1 - commonRatio));
 };
@@ -78,7 +110,7 @@ export const sumInfiniteGeometricSeries = (
 export const isValue = (
   buyPrice: number,
   decadePv: number,
-  overReturn: number
+  overReturn: number,
 ): boolean => {
   const buyPricePvRatio = buyPrice / decadePv;
   if (buyPricePvRatio <= 1 && buyPricePvRatio > 0 && overReturn > 0) {
