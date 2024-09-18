@@ -4,19 +4,11 @@ import TelForm from '../components/Forms/TelForm';
 import { SetterOrUpdater } from 'recoil';
 import axios from 'axios';
 import { ScouterData } from '../../types/post-data';
+import { CalcValueResult } from '../libs/recoil/atom';
 
 type Props = {
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setCalcValueResultByScouter: SetterOrUpdater<{
-    decadePv: number;
-    eternalPv: number;
-    isValue: string;
-    eternalPvRatio: number;
-    decadePvRatio: number;
-    per: number;
-    pbr: number;
-    nuetralPER: number;
-  }>;
+  setCalcValueResultByScouter: SetterOrUpdater<CalcValueResult>;
 };
 
 const Scouter: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultByScouter }) => {
@@ -24,9 +16,21 @@ const Scouter: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultByScouter 
     mode: 'onSubmit',
   });
   const calcScouter = async (data: ScouterData) => {
-    const result = await axios.get(
-      `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&currentAsset=${data.currentAsset}&debt=${data.debt}&equity=${data.equity}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}&cash=${data.cash}&securities=${data.securities}&isShikiho=false`,
-    );
+    const result = await axios.get('/api/calc-stock', {
+      params: {
+        buyPrice: data.buyPrice,
+        profit: data.profit,
+        currentAsset: data.currentAsset,
+        debt: data.debt,
+        equity: data.equity,
+        depreciation: data.depreciation,
+        investing: data.investing,
+        roic: data.roic,
+        cash: data.cash,
+        securities: data.securities,
+        isShikiho: false,
+      },
+    });
     setModalIsOpen(true);
     setCalcValueResultByScouter(result.data.body);
   };

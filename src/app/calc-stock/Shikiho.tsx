@@ -1,31 +1,33 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import TelForm from '../components/Forms/TelForm';
-import { PostData } from '../../types/post-data';
+import { PostData, ShikihoData } from '../../types/post-data';
 import { SetterOrUpdater } from 'recoil';
 import axios from 'axios';
+import { CalcValueResult } from '../libs/recoil/atom';
 
 type Props = {
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setCalcValueResultBySikiho: SetterOrUpdater<{
-    decadePv: number;
-    eternalPv: number;
-    isValue: string;
-    eternalPvRatio: number;
-    decadePvRatio: number;
-    per: number;
-    pbr: number;
-  }>;
+  setCalcValueResultBySikiho: SetterOrUpdater<CalcValueResult>;
 };
 
 const Shikiho: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultBySikiho }) => {
-  const { register, handleSubmit } = useForm<PostData>({
+  const { register, handleSubmit } = useForm<ShikihoData>({
     mode: 'onSubmit',
   });
-  const calcShikiho = async (data: PostData) => {
-    const result = await axios.get(
-      `/api/calc-stock?buyPrice=${data.buyPrice}&profit=${data.profit}&depreciation=${data.depreciation}&investing=${data.investing}&roic=${data.roic}&cash=${data.cash}&equity=${data.equity}&isShikiho=true`,
-    );
+  const calcShikiho = async (data: ShikihoData) => {
+    const result = await axios.get('/api/calc-stock', {
+      params: {
+        buyPrice: data.buyPrice,
+        profit: data.profit,
+        depreciation: data.depreciation,
+        investing: data.investing,
+        roic: data.roic,
+        equity: data.equity,
+        debt: data.debt,
+        isShikiho: true,
+      },
+    });
     setModalIsOpen(true);
     setCalcValueResultBySikiho(result.data.body);
   };
@@ -37,9 +39,9 @@ const Shikiho: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultBySikiho }
       >
         <TelForm label="時価総額(百万)" register={register('buyPrice')} />
         <TelForm label="純資産(百万)" register={register('equity')} />
+        <TelForm label="有利子負債(百万)" register={register('debt')} />
         <TelForm label="設備投資(百万)" register={register('investing')} />
         <TelForm label="減価償却費(百万)" register={register('depreciation')} />
-        <TelForm label="現金(百万)" register={register('cash')} />
         <TelForm label="当期純利益(百万)" register={register('profit')} />
         <div className="mx-auto w-24">
           <input

@@ -1,38 +1,38 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
+
+export interface CalcValueResult {
+  marketCapital: number;
+  excessPV: number;
+  pv: number;
+  costPV: number;
+}
 
 export const onkabuResultState = atom({
-  key: "onkabuResultState",
-  default: "",
+  key: 'onkabuResultState',
+  default: '',
 });
 
 export const calcValueStateByShikiho = atom({
-  key: "calcValueStateBySikiho",
+  key: 'calcValueStateBySikiho',
   default: {
-    decadePv: 0,
-    eternalPv: 0,
-    isValue: "",
-    eternalPvRatio: 0,
-    decadePvRatio: 0,
-    per: 0,
-    pbr: 0,
+    marketCapital: 0,
+    excessPV: 0,
+    pv: 0,
+    costPV: 0,
   },
 });
 
 export const calcValueStateByScouter = atom({
-  key: "calcValueStateByScouter",
+  key: 'calcValueStateByScouter',
   default: {
-    decadePv: 0,
-    eternalPv: 0,
-    isValue: "",
-    eternalPvRatio: 0,
-    decadePvRatio: 0,
-    per: 0,
-    pbr: 0,
-    nuetralPER: 0,
+    marketCapital: 0,
+    excessPV: 0,
+    pv: 0,
+    costPV: 0,
   },
 });
 
 export const checkStockState = atom({
-  key: "checkStockState",
-  default: { result: "" },
+  key: 'checkStockState',
+  default: { result: '' },
 });
