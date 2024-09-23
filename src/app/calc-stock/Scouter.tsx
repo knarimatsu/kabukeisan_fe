@@ -25,8 +25,6 @@ const Scouter: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultByScouter 
         equity: data.equity,
         depreciation: data.depreciation,
         investing: data.investing,
-        roic: data.roic,
-        cash: data.cash,
         securities: data.securities,
         isShikiho: false,
       },
@@ -48,7 +46,6 @@ const Scouter: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultByScouter 
         <TelForm label="純資産(百万)" register={register('equity')} />
         <TelForm label="減価償却費(百万)" register={register('depreciation')} />
         <TelForm label="設備投資(百万)" register={register('investing')} />
-        <TelForm label="ROIC(%)" register={register('roic')} />
         <div className="mx-auto w-24">
           <input
             type="submit"

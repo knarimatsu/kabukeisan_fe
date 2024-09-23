@@ -3,18 +3,16 @@ import {
   calcCompanyValueByScoutor,
   calcCompanyValueByShikiho,
 } from '../../libs/service/calc-value';
-import { ScouterData, ShikihoData } from '../../../types/post-data';
+import { ScouterData, PostData } from '../../../types/post-data';
 
 export async function GET(req: NextRequest) {
   const searchParams = await req.nextUrl.searchParams;
   const isShikiho = searchParams.get('isShikiho') === 'true';
-  const shikihoData: ShikihoData = {
+  const shikihoData: PostData = {
     buyPrice: Number(searchParams.get('buyPrice')),
     profit: Number(searchParams.get('profit')),
     depreciation: Number(searchParams.get('depreciation')),
     investing: Number(searchParams.get('investing')),
-    roic: Number(searchParams.get('roic')),
-    cash: Number(searchParams.get('cash')),
     equity: Number(searchParams.get('equity')),
     debt: Number(searchParams.get('debt')),
   };
@@ -24,7 +22,6 @@ export async function GET(req: NextRequest) {
     debt: Number(searchParams.get('debt')),
     securities: Number(searchParams.get('securities')),
   };
-  console.log(await calcCompanyValueByShikiho(shikihoData), isShikiho);
   if (isShikiho) {
     return NextResponse.json({
       status: 200,
