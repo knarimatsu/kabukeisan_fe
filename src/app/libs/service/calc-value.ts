@@ -1,4 +1,4 @@
-import { ScouterData, ShikihoData } from '../../../types/post-data';
+import { ScouterData, PostData } from '../../../types/post-data';
 import { CalcValueResult } from '../recoil/atom';
 
 export interface DfcCalculatorReturn {
@@ -7,7 +7,7 @@ export interface DfcCalculatorReturn {
   costPV: number;
 }
 
-export const calcCompanyValueByShikiho = async <T extends ShikihoData>(params: T) => {
+export const calcCompanyValueByShikiho = async <T extends PostData>(params: T) => {
   const { buyPrice, profit, depreciation, investing, equity, debt } = params;
   const freeCachFlow = profit + depreciation - investing;
   const investedCapital = equity + debt;
@@ -26,8 +26,6 @@ export const calcCompanyValueByScoutor = async <T extends ScouterData>(
     profit,
     depreciation,
     investing,
-    roic,
-    cash,
     equity,
     currentAsset,
     securities,
@@ -35,7 +33,10 @@ export const calcCompanyValueByScoutor = async <T extends ScouterData>(
   } = data;
 
   const netCash = Number(currentAsset) + Number(securities) * 0.7 - Number(debt);
-  const freeCachFlow: number = Number(profit) + Number(depreciation) - Number(investing);
+  const freeCachFlow = profit + depreciation - investing;
+  const investedCapital = equity + debt;
+  const roic = Number((freeCachFlow / investedCapital).toFixed(2));
+  console.log(freeCachFlow, roic);
   return {
     marketCapital: buyPrice,
     ...(await dfcCalculator(freeCachFlow, roic, 10)),
@@ -47,9 +48,9 @@ export const dfcCalculator = async (
   roic: number,
   year: number,
 ): Promise<DfcCalculatorReturn> => {
-  const investing = Math.ceil(fcf / (roic / 100));
+  const investing = Math.ceil(fcf / roic);
   const capitalCost = 0.1;
-  const excessReturn = Math.ceil(roic / 100 - capitalCost);
+  const excessReturn = Math.ceil(roic - capitalCost);
   const excessProfit = investing * excessReturn;
   const cost = investing * capitalCost;
   let pv = 0;
