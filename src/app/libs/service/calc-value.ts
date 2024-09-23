@@ -1,4 +1,4 @@
-import { ScouterData, ShikihoData } from '../../../types/post-data';
+import { ScouterData, PostData } from '../../../types/post-data';
 import { CalcValueResult } from '../recoil/atom';
 
 export interface DfcCalculatorReturn {
@@ -7,64 +7,54 @@ export interface DfcCalculatorReturn {
   costPV: number;
 }
 
-export const calcCompanyValueByShikiho = async <T extends ShikihoData>(params: T) => {
+export const calcCompanyValueByShikiho = async <T extends PostData>(params: T) => {
   const { buyPrice, profit, depreciation, investing, equity, debt } = params;
   const freeCachFlow = profit + depreciation - investing;
   const investedCapital = equity + debt;
   const roic = Number((freeCachFlow / investedCapital).toFixed(2));
   return {
     marketCapital: buyPrice,
-    ...(await dfcCalculator(freeCachFlow, roic, 10)),
+    ...(await dfcCalculator(freeCachFlow, roic)),
   };
 };
 
 export const calcCompanyValueByScoutor = async <T extends ScouterData>(
   data: T,
 ): Promise<CalcValueResult> => {
-  const {
-    buyPrice,
-    profit,
-    depreciation,
-    investing,
-    roic,
-    cash,
-    equity,
-    currentAsset,
-    securities,
-    debt,
-  } = data;
+  const { buyPrice, profit, depreciation, investing, equity, debt } = data;
 
-  const netCash = Number(currentAsset) + Number(securities) * 0.7 - Number(debt);
-  const freeCachFlow: number = Number(profit) + Number(depreciation) - Number(investing);
+  const freeCachFlow = profit + depreciation - investing;
+  const investedCapital = equity + debt;
+  const roic = Number((freeCachFlow / investedCapital).toFixed(2));
   return {
     marketCapital: buyPrice,
-    ...(await dfcCalculator(freeCachFlow, roic, 10)),
+    ...(await dfcCalculator(freeCachFlow, roic)),
   };
 };
 
 export const dfcCalculator = async (
   fcf: number,
   roic: number,
-  year: number,
 ): Promise<DfcCalculatorReturn> => {
-  const investing = Math.ceil(fcf / (roic / 100));
-  const capitalCost = 0.1;
-  const excessReturn = Math.ceil(roic / 100 - capitalCost);
-  const excessProfit = investing * excessReturn;
-  const cost = investing * capitalCost;
-  let pv = 0;
+  const wacc = 0.085;
+  const investing = fcf / roic;
+  const excessProfit = Math.floor(investing * (roic - wacc));
+  const cost = Math.floor(investing * wacc);
+
   let excessPV = 0;
   let costPV = 0;
-  for (let i = 0; i < year; i++) {
-    excessPV += excessProfit / 1.1 ** (year + 1);
-    costPV += cost / 1.1 ** (year + 1);
+  for (let i = 0; i < 6; i++) {
+    excessPV += excessProfit / (1 + wacc) ** (i + 1);
+    costPV += cost / (1 + wacc) ** (i + 1);
   }
-  excessPV += excessProfit / 0.1 / 1.1 ** 6;
-  costPV += cost / 0.1 / 1.1 ** 6;
-  pv = excessPV + costPV;
+  const terminalExcessValue = excessProfit / wacc / (1 + wacc) ** 6;
+  const terminalCostValue = cost / wacc / (1 + wacc) ** 6;
+  excessPV += terminalExcessValue;
+  costPV += terminalCostValue;
+
   return new Promise<DfcCalculatorReturn>((resolve) => {
     resolve({
-      pv: Math.ceil(pv),
+      pv: Math.ceil(excessPV + costPV),
       excessPV: Math.ceil(excessPV),
       costPV: Math.ceil(costPV),
     });

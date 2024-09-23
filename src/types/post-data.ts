@@ -1,22 +1,15 @@
-import Scouter from '../app/calc-stock/Scouter';
 export type PostData = {
   buyPrice: number;
   profit: number;
   depreciation: number;
   investing: number;
-  roic: number;
-  cash: number;
   equity: number;
+  debt: number;
 };
 
 export interface ScouterData extends PostData {
   currentAsset?: number;
-  debt?: number;
   securities?: number;
-}
-
-export interface ShikihoData extends PostData {
-  debt: number;
 }
 
 export interface CalcValueResultModalProp {

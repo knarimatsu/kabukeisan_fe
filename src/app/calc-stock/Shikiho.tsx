@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import TelForm from '../components/Forms/TelForm';
-import { PostData, ShikihoData } from '../../types/post-data';
+import { PostData } from '../../types/post-data';
 import { SetterOrUpdater } from 'recoil';
 import axios from 'axios';
 import { CalcValueResult } from '../libs/recoil/atom';
@@ -12,17 +12,16 @@ type Props = {
 };
 
 const Shikiho: React.FC<Props> = ({ setModalIsOpen, setCalcValueResultBySikiho }) => {
-  const { register, handleSubmit } = useForm<ShikihoData>({
+  const { register, handleSubmit } = useForm<PostData>({
     mode: 'onSubmit',
   });
-  const calcShikiho = async (data: ShikihoData) => {
+  const calcShikiho = async (data: PostData) => {
     const result = await axios.get('/api/calc-stock', {
       params: {
         buyPrice: data.buyPrice,
         profit: data.profit,
         depreciation: data.depreciation,
         investing: data.investing,
-        roic: data.roic,
         equity: data.equity,
         debt: data.debt,
         isShikiho: true,

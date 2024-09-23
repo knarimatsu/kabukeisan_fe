@@ -28,25 +28,26 @@ const Calc = () => {
     setModalIsOpen(false);
   };
 
+  /** 計算結果をモーダルに表示させる */
   const modalContent = () => {
     let data: CalcValueResult;
     data = isShikiho ? calcValueResultByShikiho : calcValueResultByScouter;
     return (
       <div className="px-10 py-8 w-96 border rounded-lg bg-white">
         <p className="text-xl font-black text-emerald-500">
-          {'現在価値'}: {data.pv}
+          {'現在価値'}: {data.pv.toLocaleString()}
         </p>
         <p>{(data.pv / data.marketCapital).toFixed(1)}</p>
         <p className="text-xl font-black text-emerald-500">
-          {'超過リターン'}: {data.excessPV}
+          {'超過リターン'}: {data.excessPV.toLocaleString()}
         </p>
         <p>{(data.excessPV / data.marketCapital).toFixed(1)}</p>
         <p className="text-xl font-black text-emerald-500">
-          {'資本費用'}: {data.costPV}
+          {'資本費用'}: {data.costPV.toLocaleString()}
         </p>
         <p>{(data.costPV / data.marketCapital).toFixed(1)}</p>
         <p className="text-xl font-black text-emerald-500">
-          {'時価総額'}: {data.marketCapital}
+          {'時価総額'}: {data.marketCapital.toLocaleString()}
         </p>
       </div>
     );
